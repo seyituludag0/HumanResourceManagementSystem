@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Data
@@ -29,7 +31,7 @@ public class SchoolDepartment {
     @JoinColumn(name="department_id")
     private Department department;
 
-//    @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "schoolDepartment" )
     private List<SchoolCandidate> schoolCandidates;
 
