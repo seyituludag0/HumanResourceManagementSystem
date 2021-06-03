@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 
-@Table(name="activation_code")
+@Table(name="activation_codes")
 public class ActivationCode {
 
 	@Id

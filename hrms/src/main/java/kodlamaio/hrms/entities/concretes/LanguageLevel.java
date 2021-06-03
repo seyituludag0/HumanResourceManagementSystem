@@ -12,7 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="language_level")
+@Table(name="language_levels")
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","languageCandiates"})
