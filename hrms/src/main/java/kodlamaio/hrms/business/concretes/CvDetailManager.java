@@ -28,6 +28,11 @@ public class CvDetailManager implements CvDetailService{
 	public DataResult<List<CvDetail>> getAll() {
 		return new SuccessDataResult<List<CvDetail>>(this.cvDetailDao.findAll(),"Tüm cv bilgileri getirildi");
 	}
+	
+	@Override
+	public DataResult<CvDetail> getByCandidate_Id(int candidateId){
+		return new SuccessDataResult<CvDetail>(this.cvDetailDao.getByCandidate_Id(candidateId),"Adayın cv'si getirildi");
+	}
 
 	@Override
 	public Result add(CvDetail cvDetail) {

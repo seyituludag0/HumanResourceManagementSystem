@@ -6,4 +6,6 @@ import kodlamaio.hrms.entities.concretes.CvDetail;
 
 public interface CvDetailDao extends JpaRepository<CvDetail, Integer>{
 
+	CvDetail getByCandidate_Id(int candidateId);
+	
 }
