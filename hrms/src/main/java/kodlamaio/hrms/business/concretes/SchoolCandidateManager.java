@@ -12,7 +12,6 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.SchoolCandidateDao;
 import kodlamaio.hrms.entities.concretes.SchoolCandidate;
-import kodlamaio.hrms.entities.concretes.SchoolDepartment;
 
 @Service
 public class SchoolCandidateManager implements SchoolCandidateService {
@@ -35,6 +34,11 @@ public class SchoolCandidateManager implements SchoolCandidateService {
 	public Result add(SchoolCandidate schoolCandidate) {
 		this.schoolCandidateDao.save(schoolCandidate);
 		return new SuccessResult("Okul departmanı eklendi");
+	}
+
+	@Override
+	public DataResult<List<SchoolCandidate>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<SchoolCandidate>>(this.schoolCandidateDao.getByCandidateId(candidateId),"Adayın okul listesi getirildi");
 	}
 
 }

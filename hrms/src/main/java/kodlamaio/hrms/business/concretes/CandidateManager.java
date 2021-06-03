@@ -7,56 +7,89 @@ import kodlamaio.hrms.core.utilities.results.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.business.abstracts.AbilityCandidateService;
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.CvDetailService;
+import kodlamaio.hrms.business.abstracts.LanguageCandidateService;
+import kodlamaio.hrms.business.abstracts.SchoolCandidateService;
+import kodlamaio.hrms.business.abstracts.SocialMediaService;
+import kodlamaio.hrms.business.abstracts.WorkplaceCandidateService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.dtos.CvDto;
 import kodlamaio.hrms.mernisService.IdentityCheckerService;
 
 @Service
-public class CandidateManager implements CandidateService{
+public class CandidateManager implements CandidateService {
 
 	private CandidateDao candidateDao;
 	private IdentityCheckerService identityCheckerService;
 	private EmailAdapter emailAdapter;
 
+	private SchoolCandidateService schoolCandidateService;
+	private LanguageCandidateService languageCandidateService;
+	private WorkplaceCandidateService workplaceCandidateService;
+	private SocialMediaService socialMediaService;
+	private AbilityCandidateService abilityCandidateService;
+	private CvDetailService cvDetailService;
+
 	@Autowired
-	public CandidateManager(CandidateDao candidateDao, EmailAdapter emailAdapter,IdentityCheckerService identityCheckerService) {
-		super();
+	public CandidateManager(CandidateDao candidateDao, EmailAdapter emailAdapter,
+			IdentityCheckerService identityCheckerService, SchoolCandidateService schoolCandidateService,
+			LanguageCandidateService languageCandidateService, WorkplaceCandidateService workplaceCandidateService,
+			SocialMediaService socialMediaService, AbilityCandidateService abilityCandidateService,
+			CvDetailService cvDetailService) {
 		this.candidateDao = candidateDao;
-		this.emailAdapter = emailAdapter;
-		this.identityCheckerService = identityCheckerService;
+		this.workplaceCandidateService = workplaceCandidateService;
+		this.socialMediaService = socialMediaService;
+		this.schoolCandidateService = schoolCandidateService;
+		this.languageCandidateService = languageCandidateService;
+		this.abilityCandidateService = abilityCandidateService;
+		this.cvDetailService = cvDetailService;
 	}
-	
-	@Override
-	public DataResult<List<Candidate>> getAll() {
-	List<Candidate> candidates = this.candidateDao.findAll();
-	if(candidates.isEmpty()) {
-		return new ErrorDataResult<>(Message.getNullCandidate);
-	}
-	return new SuccessDataResult<List<Candidate>>(candidates, Message.getAllCandidate);
-}
 
 	@Override
-    public Result add(Candidate candidate) {
-		if(!identityCheckerService.fakeMernisControl(candidate.getFirstName(), candidate.getLastName(), candidate.getIdentityNumber(),
-				candidate.getBirthYear())) {
-			return new ErrorResult("Kimlik doğrulanamadı");
+	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId) {
+
+		CvDto cvDto = new CvDto();
+
+		cvDto.setCandidate(this.candidateDao.findById(candidateId).get());
+		cvDto.setWorkplaceCandidate(this.workplaceCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setSocialMedias(this.socialMediaService.getByCandidateId(candidateId).getData());
+		cvDto.setSchoolCandidates(this.schoolCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setLanguageCandidates(this.languageCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setAbilityCandidates(this.abilityCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setAbilityCandidates(this.abilityCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setCvDetail(this.cvDetailService.getByCandidateId(candidateId).getData());
+
+		return new SuccessDataResult<CvDto>(cvDto, "Cv getirildi");
+	}
+
+	@Override
+	public DataResult<List<Candidate>> getAll() {
+		List<Candidate> candidates = this.candidateDao.findAll();
+		if (candidates.isEmpty()) {
+			return new ErrorDataResult<>(Message.getNullCandidate);
 		}
-		else if (isMailExists(candidate.getEmail())) {
-            return new ErrorResult(Message.emailAlreadyRegistered);
-        }
-		else if (isIdentityNumberExists(candidate.getIdentityNumber())) {
-            return new ErrorResult(Message.identityNumberAlreadyRegistered);
-        }
-		else if (!emailAdapter.sendEmail(candidate.getEmail())) {
-            return new ErrorResult("E mail doğrulanmadı");
-        }
-        candidateDao.save(candidate);
-        return new SuccessResult(Message.registered);
-    }
-	
-	
+		return new SuccessDataResult<List<Candidate>>(candidates, Message.getAllCandidate);
+	}
+
+	@Override
+	public Result add(Candidate candidate) {
+		if (!identityCheckerService.fakeMernisControl(candidate.getFirstName(), candidate.getLastName(),
+				candidate.getIdentityNumber(), candidate.getBirthYear())) {
+			return new ErrorResult("Kimlik doğrulanamadı");
+		} else if (isMailExists(candidate.getEmail())) {
+			return new ErrorResult(Message.emailAlreadyRegistered);
+		} else if (isIdentityNumberExists(candidate.getIdentityNumber())) {
+			return new ErrorResult(Message.identityNumberAlreadyRegistered);
+		} else if (!emailAdapter.sendEmail(candidate.getEmail())) {
+			return new ErrorResult("E mail doğrulanmadı");
+		}
+		candidateDao.save(candidate);
+		return new SuccessResult(Message.registered);
+	}
 
 	@Override
 	public Result update(Candidate candidate) {
@@ -71,13 +104,12 @@ public class CandidateManager implements CandidateService{
 	}
 
 	private boolean isIdentityNumberExists(String identityNumber) {
-        return this.candidateDao.findByIdentityNumber(identityNumber).isPresent();
-    }
-	
-	private boolean isMailExists(String eMail) {
-        return this.candidateDao.findByEmail(eMail).isPresent();
-    }
+		return this.candidateDao.findByIdentityNumber(identityNumber).isPresent();
+	}
 
+	private boolean isMailExists(String eMail) {
+		return this.candidateDao.findByEmail(eMail).isPresent();
+	}
 
 	@Override
 	public Result isIdentityNumberExist(String identityNumber) {
@@ -88,5 +120,5 @@ public class CandidateManager implements CandidateService{
 			return new ErrorResult("Bu Tc kimlik no ile kayıtlı kullanıcı var.");
 		}
 	}
-	
+
 }

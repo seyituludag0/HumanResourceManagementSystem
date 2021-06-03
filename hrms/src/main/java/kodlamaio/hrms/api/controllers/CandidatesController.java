@@ -4,6 +4,8 @@ import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.dtos.CvDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,11 @@ public class CandidatesController {
 		return this.candidateService.getAll();
 	}
 
+	@GetMapping("/getCandidateCvByCandidateId")
+	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId){
+		return this.candidateService.getCandidateCvByCandidateId(candidateId);
+	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody @Valid Candidate candidate) {
 		return this.candidateService.add(candidate);

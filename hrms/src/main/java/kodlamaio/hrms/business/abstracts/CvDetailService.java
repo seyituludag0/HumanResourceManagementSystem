@@ -9,7 +9,7 @@ import kodlamaio.hrms.entities.concretes.CvDetail;
 public interface CvDetailService {
 
 	DataResult<List<CvDetail>> getAll();
-	DataResult<CvDetail> getByCandidate_Id(int candidateId);
+	DataResult<CvDetail> getByCandidateId(int candidateId);
 	Result add(CvDetail cvDetail);
 	
 }

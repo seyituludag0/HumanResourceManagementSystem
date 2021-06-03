@@ -30,7 +30,7 @@ public class LanguageLevel {
 
     @JsonIgnore
     @OneToMany(mappedBy = "languageLevel" )
-    private List<LanguageCandiate> languageCandiates;
+    private List<LanguageCandidate> languageCandiates;
 
 
 }

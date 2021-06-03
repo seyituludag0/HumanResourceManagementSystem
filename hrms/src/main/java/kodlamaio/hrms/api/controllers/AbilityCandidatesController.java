@@ -32,10 +32,15 @@ public class AbilityCandidatesController {
 		return this.abilityCandidateService.getAll();
 	}
 	
+	@GetMapping("/getByCandidateId")
+	DataResult<List<AbilityCandidate>> getByCandidateId(int candidateId){
+		return this.abilityCandidateService.getByCandidateId(candidateId);
+	}
 
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@RequestBody AbilityCandidate abilityCandidate){
 		return ResponseEntity.ok(this.abilityCandidateService.add(abilityCandidate));
 	}
+	
 	
 }

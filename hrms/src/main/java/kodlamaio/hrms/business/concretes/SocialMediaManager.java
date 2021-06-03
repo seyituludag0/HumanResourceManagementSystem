@@ -36,5 +36,12 @@ public class SocialMediaManager implements SocialMediaService{
 		this.socialMediaDao.save(socialMedia);
 		return new SuccessResult("Sosyal medya eklendi");
 	}
+
+
+
+	@Override
+	public DataResult<List<SocialMedia>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<SocialMedia>>(this.socialMediaDao.getByCandidate_Id(candidateId), "Adayın sosyal medya hesapları getirildi");
+	}
 	
 }

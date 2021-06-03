@@ -30,7 +30,7 @@ public class CvDetailManager implements CvDetailService{
 	}
 	
 	@Override
-	public DataResult<CvDetail> getByCandidate_Id(int candidateId){
+	public DataResult<CvDetail> getByCandidateId(int candidateId){
 		return new SuccessDataResult<CvDetail>(this.cvDetailDao.getByCandidate_Id(candidateId),"Adayın cv'si getirildi");
 	}
 

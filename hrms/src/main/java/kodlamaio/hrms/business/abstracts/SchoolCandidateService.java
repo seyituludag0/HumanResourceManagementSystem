@@ -9,5 +9,8 @@ import kodlamaio.hrms.entities.concretes.SchoolCandidate;
 public interface SchoolCandidateService {
 
 	DataResult<List<SchoolCandidate>> getAll();
+	
+	DataResult<List<SchoolCandidate>> getByCandidateId(int candidateId);
+	
 	Result add(SchoolCandidate schoolCandidate);
 }

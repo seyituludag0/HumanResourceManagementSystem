@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name="language_candidates")
 @AllArgsConstructor
 @NoArgsConstructor
-public class LanguageCandiate {
+public class LanguageCandidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

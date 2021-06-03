@@ -33,6 +33,10 @@ public class WorkCandidatesController {
 		return this.workplaceCandidateService.getAll();
 	}
 	
+	@GetMapping("getByCandidateId")
+	public DataResult<List<WorkplaceCandidate>> getByCandidateId(int candidateId){
+		return this.workplaceCandidateService.getByCandidateId(candidateId);
+	}
 
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@RequestBody WorkplaceCandidate workplaceCandidate){

@@ -29,6 +29,6 @@ public class Language {
 
     @JsonIgnore
     @OneToMany(mappedBy = "language" )
-    private List<LanguageCandiate> languageCandiates;
+    private List<LanguageCandidate> languageCandiates;
 
 }

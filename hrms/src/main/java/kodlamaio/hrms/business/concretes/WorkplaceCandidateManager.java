@@ -32,5 +32,10 @@ public class WorkplaceCandidateManager implements WorkplaceCandidateService{
 		this.workplaceCandidateDao.save(workplaceCandidate);
 		return new SuccessResult("Adayın çalışmış olduğu şirketler listesine eklendi");
 	}
+
+	@Override
+	public DataResult<List<WorkplaceCandidate>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<WorkplaceCandidate>>(this.workplaceCandidateDao.getByCandidateId(candidateId),"Adayın çalıştığı işyerleri listelendi");
+	}
 	
 }

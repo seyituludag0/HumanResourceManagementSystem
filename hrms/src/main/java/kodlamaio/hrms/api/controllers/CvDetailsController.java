@@ -35,7 +35,7 @@ public class CvDetailsController {
 
 	@GetMapping("/getByCandidateId")
 	public DataResult<CvDetail> getByCandidateId(@RequestParam int candidateId){
-		return this.cvDetailService.getByCandidate_Id(candidateId);
+		return this.cvDetailService.getByCandidateId(candidateId);
 	}
 
 	@PostMapping("/add")
