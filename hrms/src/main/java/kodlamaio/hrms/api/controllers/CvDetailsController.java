@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.business.abstracts.CvDetailService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.CvDetail;
 
 @RestController
@@ -38,6 +40,11 @@ public class CvDetailsController {
 		return this.cvDetailService.getByCandidateId(candidateId);
 	}
 
+	@PostMapping("/uploadPhoto")
+	public Result uploadPhoto(@RequestParam int candidateId, @RequestParam("file") MultipartFile photoFile) {
+		return this.cvDetailService.uploadPhoto(candidateId, photoFile);
+	}
+	
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@RequestBody CvDetail cvDetail){
 		return ResponseEntity.ok(this.cvDetailService.add(cvDetail));
