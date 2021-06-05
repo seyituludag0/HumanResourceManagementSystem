@@ -41,4 +41,9 @@ public class SchoolCandidateManager implements SchoolCandidateService {
 		return new SuccessDataResult<List<SchoolCandidate>>(this.schoolCandidateDao.getByCandidateId(candidateId),"Adayın okul listesi getirildi");
 	}
 
+	@Override
+	public DataResult<List<SchoolCandidate>> getByCandidate_IdOrderByDateOfGraduationDesc(int candidateId) {
+		return new SuccessDataResult<List<SchoolCandidate>>(this.schoolCandidateDao.getByCandidate_IdOrderByDateOfGraduationDesc(candidateId));
+	}
+
 }

@@ -8,7 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +36,8 @@ public abstract class User {
 	@Column(name="email")
 	private String email;
 
-	
+	@NotNull
+	@NotBlank
 	@Column(name="password")
 	private String password;
 

@@ -45,13 +45,11 @@ public class AuthManager implements AuthService {
 		candidateService.add(candidate);
 
 		activationCodeService.sendActivationCode(candidate.getId());
-		
 
-	
-		
 		return new SuccessResult("Kayıt başarıyla tamamlandı.");
 	}
 
+	
 	private Result isIdentityNumberExist(String identityNumber) {
 		if (this.candidateService.isIdentityNumberExist(identityNumber).isSuccess()) {
 

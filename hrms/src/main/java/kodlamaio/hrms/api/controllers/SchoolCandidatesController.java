@@ -33,8 +33,13 @@ public class SchoolCandidatesController {
 	}
 	
 	@GetMapping("/getByCandidateId")
-	DataResult<List<SchoolCandidate>> getByCandidateId(@RequestParam int candidateId){
+	public DataResult<List<SchoolCandidate>> getByCandidateId(@RequestParam int candidateId){
 		return this.schoolCandidateService.getByCandidateId(candidateId);
+	}
+	
+	@GetMapping("/getByCandidateIdOrderByDateOfGraduationDesc")
+	public DataResult<List<SchoolCandidate>> getByCandidateIdOrderByDateOfGraduationDesc(int candidateId){
+		return this.schoolCandidateService.getByCandidate_IdOrderByDateOfGraduationDesc(candidateId);
 	}
 
 	@PostMapping("/add")
