@@ -34,10 +34,10 @@ public class CandidatesController {
 		return this.candidateService.getCandidateCvByCandidateId(candidateId);
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody @Valid Candidate candidate) {
-		return this.candidateService.add(candidate);
-	}
+//	@PostMapping("/add")
+//	public Result add(@RequestBody @Valid Candidate candidate) {
+//		return this.candidateService.add(candidate);
+//	}
 
 	@PostMapping("/update")
 	public Result update(@RequestBody @Valid Candidate candidate) {

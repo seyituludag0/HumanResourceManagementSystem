@@ -2,6 +2,8 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +40,7 @@ public class SocialMediasController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@RequestBody SocialMedia socialMedia){
+	public ResponseEntity<?> add(@Valid @RequestBody SocialMedia socialMedia){
 		return ResponseEntity.ok(this.socialMediaService.add(socialMedia));
 	}
 }

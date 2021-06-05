@@ -27,13 +27,13 @@ public class AuthController {
 	@PostMapping("/registerEmployer")
 	public Result registerEmpolyer(@Valid @RequestBody Employer employer)
 	{
-		return authService.registerWithEmployer(employer);
+		return authService.registerEmployer(employer);
 	}
 	
 	@PostMapping("/registerCandidate")
 	public Result registerCandidate(@Valid @RequestBody Candidate candidate)
 	{
-		return authService.registerWithCandidate(candidate);
+		return authService.registerCandidate(candidate);
 	}
 
 }

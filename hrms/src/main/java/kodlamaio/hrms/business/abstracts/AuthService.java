@@ -5,6 +5,6 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.Employer;
 
 public interface AuthService {
-	Result registerWithCandidate(Candidate candidate);
-	Result registerWithEmployer(Employer employer);
+	Result registerCandidate(Candidate candidate);
+	Result registerEmployer(Employer employer);
 }

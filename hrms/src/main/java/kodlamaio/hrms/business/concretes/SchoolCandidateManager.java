@@ -27,7 +27,7 @@ public class SchoolCandidateManager implements SchoolCandidateService {
 	@Override
 	public DataResult<List<SchoolCandidate>> getAll() {
 		return new SuccessDataResult<List<SchoolCandidate>>(schoolCandidateDao.findAll(),
-				"Okul departmanları getirildi");
+				"Adayın okulları ve bölümleri getirildi");
 	}
 
 	@Override

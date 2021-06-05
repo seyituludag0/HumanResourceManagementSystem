@@ -27,6 +27,7 @@ public class SocialMedia {
     @JoinColumn(name="link_type_id")
     private LinkType linkType;
 
+
     @Column(name="link")
     private String link;
 }

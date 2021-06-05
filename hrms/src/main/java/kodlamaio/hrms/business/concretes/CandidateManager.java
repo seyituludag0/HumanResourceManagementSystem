@@ -47,7 +47,9 @@ public class CandidateManager implements CandidateService {
 		this.languageCandidateService = languageCandidateService;
 		this.abilityCandidateService = abilityCandidateService;
 		this.cvDetailService = cvDetailService;
-	}
+		this.identityCheckerService = identityCheckerService;
+		this.emailAdapter = emailAdapter;
+		}
 
 	@Override
 	public DataResult<CvDto> getCandidateCvByCandidateId(int candidateId) {

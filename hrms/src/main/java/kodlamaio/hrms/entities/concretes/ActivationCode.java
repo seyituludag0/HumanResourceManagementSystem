@@ -1,18 +1,14 @@
 package kodlamaio.hrms.entities.concretes;
 
-
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,28 +17,30 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-
-@Table(name="activation_codes")
+@Table(name = "activation_codes")
 public class ActivationCode {
-
 	@Id
-	@GeneratedValue
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "user_id")
+	private int userId;
 	
-	@Column(name="activation_code")
-	private String activationCode;
+	@Column(name = "code")
+	private String code;
 	
-	@Column(name="is_valid")
-	private boolean isValid;
+	@Column(name = "is_verified")
+	private boolean isVerified;
 	
-//		@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-//		@Column(name="validation_date", columnDefinition = "Date default CURRENT_DATE")
-//		private LocalDate validationDate = LocalDate.now();
+	@Column(name = "verified_date")
+	private LocalDateTime verifiedDate;
+
+	public ActivationCode(int userId, String code, boolean isVerified, LocalDateTime verifiedDate) {
+		this.userId = userId;
+		this.code = code;
+		this.isVerified = isVerified;
+		this.verifiedDate = verifiedDate;
+	}
 	
-//	@Column(name="validation_date")
-//	private LocalDate validationDate;
 }

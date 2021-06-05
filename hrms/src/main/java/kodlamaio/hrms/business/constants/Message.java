@@ -53,7 +53,7 @@ public class Message {
     public static String getByIsActiveTrueOrderByPostedDate = "Aktif iş ilanları tarihe göre listelendi";
     public static String getByisActiveTrueAndEmployer_companyName = "Aktif iş ilanları olan şirketler listelendi";
     public static String nullisActiveTrueAndEmployer_companyName = "Aktif iş ilanları olan şirketler listesi boş";
-    public static String JobPostDoesntexists = "İş ilanı mevcut değil";
+    public static String jobPostDoesntexists = "İş ilanı mevcut değil";
     public static String getByIsActiveTrueAndEmployer_companyName = "Şirketin iş ilanları aktif olma durumuna göre listelendi";
     public static String checkIfNullField = "Eksik bilgi girdiniz. lütfen bütün boşlukları doldurun";
 	public static String getJobPosting = "İlan getirildi";
@@ -61,6 +61,8 @@ public class Message {
 	public static String jobPostingIsAlreadyPassive = "İş ilanı zaten pasif";
 	public static String jobPostingActived = "İş ilanı aktif hale getirildi";
 	public static String checkIfEmployerEmail = "Emailiniz şirketinize ait bir domain içermelidir";
+	public static String sendedActivationCode = "Aktivasyon kodu gönderildi";
+	public static String verifiedActivationCode = "Aktivasyon kodu doğrulandı";
 }
 
 

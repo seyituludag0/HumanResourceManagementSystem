@@ -1,7 +1,10 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.hibernate.validator.internal.constraintvalidators.hv.URLValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +36,11 @@ public class SocialMediaManager implements SocialMediaService{
 
 	@Override
 	public Result add(SocialMedia socialMedia) {
-		this.socialMediaDao.save(socialMedia);
+		
+		this.socialMediaDao.save(socialMedia);	
 		return new SuccessResult("Sosyal medya eklendi");
 	}
-
-
+	
 
 	@Override
 	public DataResult<List<SocialMedia>> getByCandidateId(int candidateId) {
