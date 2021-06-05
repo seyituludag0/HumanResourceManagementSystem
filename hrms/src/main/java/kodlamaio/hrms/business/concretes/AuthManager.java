@@ -71,24 +71,28 @@ public class AuthManager implements AuthService {
 	@Override
 	public Result registerEmployer(Employer employer) {
 
-		Result result = BusinessRules.run(checkNullFieldsForEmployer(employer));
+		Result result = BusinessRules.run(checkNullFieldsForEmployer(employer),
+				checkIfEqualEmailAndDomain(employer.getEmail(), employer.getWebAddress()));
 
 		if (result != null) {
 			return result;
 		}
 		this.employerService.add(employer);
 		this.activationCodeService.sendActivationCode(employer.getId());
-		return new SuccessResult("Kayıt başarıyla tamamlandı.");
+		
+		return new SuccessResult("Kayıt başarıyla tamamlandı. Doğrulama kodu gönderiliyor...");
 	}
 
-//	private Result checkMailAndDomain(String email, String webAddress) {
-//		String[] mails = email.split("@", 2);
-//		String domain = webAddress.substring(4, webAddress.length());
-//		if (mails[1].equals(domain)) {
-//			return new SuccessResult();
-//		}
-//		return new ErrorResult("Mail adresi uzantısı ile web sitesinin alan adı uyuşmuyor.");
-//	}
+	private Result checkIfEqualEmailAndDomain(String email, String webAddress) {
+		String[] emailArray = email.split("@", 2);
+		String domain = webAddress.substring(4,webAddress.length());
+		
+		if(emailArray[1].equals(domain)) {
+			return new SuccessResult();
+		}
+		return new ErrorResult("Mail adresi uzantısı ile web sitesinin alan adı uyuşmuyor");
+		
+	}
 
 	private Result checkNullFieldsForEmployer(Employer employer) {
 

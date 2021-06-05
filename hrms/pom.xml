@@ -87,8 +87,30 @@
             <artifactId>cloudinary-http44</artifactId>
             <version>1.29.0</version>
         </dependency>
+        
+        
+
+		<dependency>
+		    <groupId>com.github.Cloudmersive</groupId>
+		    <artifactId>Cloudmersive.APIClient.Java</artifactId>
+		    <version>v3.54</version>
+		</dependency>
+
 
    </dependencies>
+   
+   
+<repositories>
+
+    <repository>
+
+        <id>jitpack.io</id>
+
+       <url>https://jitpack.io</url>
+
+    </repository>
+
+</repositories>
 
 	<build>
 		<plugins>

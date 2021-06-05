@@ -34,5 +34,4 @@ public class SchoolManager implements SchoolService{
 		this.schoolDao.save(school);
 		return new SuccessResult("Üni eklendi");
 	}
-
 }

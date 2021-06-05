@@ -30,10 +30,4 @@ public class EmployerController {
 	public DataResult<List<Employer>> getAll(){
 		return this.employerService.getAll();
 	}
-    
-    
-    @PostMapping("/add")
-    public Result add(@RequestBody @Valid Employer employer){
-        return this.employerService.add(employer);
-    }
 }

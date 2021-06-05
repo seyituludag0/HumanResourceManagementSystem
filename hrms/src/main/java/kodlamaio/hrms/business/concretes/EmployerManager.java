@@ -29,9 +29,7 @@ public class EmployerManager implements EmployerService {
     @Override
     public Result add(Employer employer) {
 
-//    	if(isRealEmployerEmail(employer)!=null) {
-//    		return new ErrorResult(Message.checkIfEmployerEmail);
-//    	}
+
 
     	if(!isRealEmail(employer)){
             return new ErrorDataResult<Employer>(null, Message.checkYourEmail);
@@ -49,20 +47,6 @@ public class EmployerManager implements EmployerService {
         return new SuccessDataResult<List<Employer>>(employers, Message.getAllEmployer);
     }
 
-
-//    private Result isRealEmployerEmail(Employer employer) {
-//        String email = employer.getEmail();
-//        String webAddress = employer.getWebAddress();
-//        String[] emailSplit = email.split("@");
-//        String[] webAddressSplit = webAddress.split("www.");
-//        if(!emailSplit[1].equals(webAddressSplit[1])) {
-//            return new ErrorResult("E-posta ile web domaininiz ayni olmalidir");
-//        }
-//        return null;
-//    }
-    
-    
-    
     
     private boolean isRealEmail(Employer employer) {
         String regex = "^(.+)@(.+)$";
