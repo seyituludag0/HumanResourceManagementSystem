@@ -79,4 +79,8 @@ public class JobPosting {
     @JoinColumn(name="work_type_id")
     private WorkType workType;
     
+    @ManyToOne()
+    @JoinColumn(name="work_time_id")
+    private WorkingTime workingTimes;
+    
 }
