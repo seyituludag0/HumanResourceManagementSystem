@@ -119,6 +119,18 @@ public DataResult<JobPosting> getById(int id) {
 		}
 	}
 
+    @Override
+    public DataResult<List<JobPosting>> getAllByCity_Name(String name) {
+        return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByCity_Name(name),"Şehire göre iş ilanları listelendi");
+    }
+
+    @Override
+    public DataResult<List<JobPosting>> getAllByCity_Id(int id) {
+        return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByCity_Id(id),"Şehire göre iş ilanları listelendi");
+    }
+
+	
+
 	
 
 

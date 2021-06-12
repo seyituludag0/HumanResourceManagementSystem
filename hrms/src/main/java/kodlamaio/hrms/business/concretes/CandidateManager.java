@@ -123,4 +123,6 @@ public class CandidateManager implements CandidateService {
 		}
 	}
 
+	
+
 }

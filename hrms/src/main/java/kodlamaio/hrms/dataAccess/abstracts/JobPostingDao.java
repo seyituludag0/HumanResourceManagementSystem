@@ -13,4 +13,8 @@ public interface JobPostingDao extends JpaRepository<JobPosting,Integer> {
     JobPosting getById(int id);
    
 
+    List<JobPosting> getAllByCity_Name(String name);
+
+    List<JobPosting> getAllByCity_Id(int id);
+
 }

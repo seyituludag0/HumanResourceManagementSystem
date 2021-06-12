@@ -20,4 +20,8 @@ public interface JobPostingService {
     DataResult<List<JobPostingDto>> getByIsActiveTrueAndEmployer_companyName(String companyName);
 
     DataResult<JobPosting> getById(int id);
+    
+    DataResult<List<JobPosting>> getAllByCity_Name(String name);
+
+    DataResult<List<JobPosting>> getAllByCity_Id(int id);
 }

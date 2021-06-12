@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b529303-5b96-4584-be48-e7ad55a8b1a4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/JobPostingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/JobPostingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/JobPostingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/JobPostingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/JobPostingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/JobPostingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/JobPostingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/JobPostingDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +19,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/entities/concretes/School.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/JobPostingDao.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1tMHOdaJUYoy0Ns4VE8UXGGqpJ3" />
   <component name="ProjectViewState">
@@ -26,7 +32,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/mee/hrms" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,6 +50,8 @@
       <workItem from="1622582183236" duration="998000" />
       <workItem from="1622586545535" duration="170000" />
       <workItem from="1622798782947" duration="256000" />
+      <workItem from="1623065406240" duration="198000" />
+      <workItem from="1623065734559" duration="50000" />
     </task>
     <servers />
   </component>

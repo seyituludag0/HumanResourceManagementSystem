@@ -15,4 +15,5 @@ public interface CandidateService {
 	Result isIdentityNumberExist(String identityNumber);
 	
 	DataResult<CvDto> getCandidateCvByCandidateId(int candidateId);
+	
 }
