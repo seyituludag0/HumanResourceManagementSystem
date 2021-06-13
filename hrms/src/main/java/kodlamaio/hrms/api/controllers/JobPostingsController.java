@@ -4,6 +4,7 @@ import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.concretes.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class JobPostingsController {
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody JobPosting jobPosting) {
-        return this.jobPostingService.add(jobPosting);
+    public Result add(@RequestBody JobPostingAddDto jobPostingAddDto) {
+        return this.jobPostingService.add(jobPostingAddDto);
     }
 
     @PostMapping("/update")

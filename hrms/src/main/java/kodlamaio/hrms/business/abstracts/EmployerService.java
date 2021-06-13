@@ -9,5 +9,6 @@ import java.util.List;
 public interface EmployerService {
     Result add(Employer employer);
     DataResult<List<Employer>> getAll();
+    DataResult<Employer> getById(int id);
     Result isCompanyEmailExist(String email);
 }

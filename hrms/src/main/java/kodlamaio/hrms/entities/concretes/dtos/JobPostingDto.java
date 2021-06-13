@@ -6,14 +6,15 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.Date;
 
+import kodlamaio.hrms.entities.concretes.WorkingTime;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class JobPostingDto {
 
-//    Firmadı, genel iş pozisyonu adı, açık pozisyon adedi, yayın tarihi, son başvuru tarihi
-
-    private String companyName;
+	private String companyName;
 
     private String jobTitle;
 
@@ -22,7 +23,6 @@ public class JobPostingDto {
     private Date postedDate;
 
     private LocalDate lastApplyDate;
-
-
-
+	
+	
 }

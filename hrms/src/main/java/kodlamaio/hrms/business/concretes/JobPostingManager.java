@@ -1,10 +1,14 @@
 package kodlamaio.hrms.business.concretes;
 
+import kodlamaio.hrms.business.abstracts.CityService;
+import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.abstracts.JobPostingService;
+import kodlamaio.hrms.business.abstracts.JobTitleService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.core.utilities.results.*;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.concretes.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +21,23 @@ import java.util.List;
 public class JobPostingManager implements JobPostingService {
     private JobPostingDao jobPostingDao;
     private ModelMapper modelMapper;
-
+    private CityService cityService;
+    private EmployerService employerService;
+    private JobTitleService jobTitleService;
+    
+    
     @Autowired
-    public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper) {
-        this.jobPostingDao = jobPostingDao;
-        this.modelMapper = modelMapper;
-    }
+    public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper, CityService cityService,
+			EmployerService employerService, JobTitleService jobTitleService) {
+		super();
+		this.jobPostingDao = jobPostingDao;
+		this.modelMapper = modelMapper;
+		this.cityService = cityService;
+		this.employerService = employerService;
+		this.jobTitleService = jobTitleService;
+	}
 
-    @Override
+	@Override
     public DataResult<List<JobPosting>> getAll() {
         List<JobPosting> jobPostings = this.jobPostingDao.findAll();
         if(jobPostings.isEmpty()){
@@ -33,14 +46,7 @@ public class JobPostingManager implements JobPostingService {
         return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(),Message.getAllJobPosting);
     }
 
-    @Override
-    public Result add(JobPosting jobPosting) {
-        if (!checkIfNullField(jobPosting)) {
-            return new ErrorResult(Message.checkIfNullField);
-        }
-        this.jobPostingDao.save(jobPosting);
-        return new SuccessResult(Message.addJobPosting);
-    }
+
 
     @Override
     public Result update(JobPosting jobPosting) {
@@ -130,10 +136,34 @@ public DataResult<JobPosting> getById(int id) {
     }
 
 	
-
-	
-
-
+    
+    
+    
+    @Override
+	public Result add(JobPostingAddDto jobPostingAddDto) {
+		JobPosting jobPosting = new JobPosting(
+				
+				jobPostingAddDto.getJobDetails(),
+				jobPostingAddDto.getMinWage(),
+				jobPostingAddDto.getMaxWage(),
+				jobPostingAddDto.getNumberOfOpenPositions(),
+				jobPostingAddDto.getLastApplyDate(),
+				jobPostingAddDto.isActive(),
+				jobPostingAddDto.getPostedDate()
+				
+				);
+		
+		jobPosting.setCity(this.cityService.getById(jobPostingAddDto.getCityId()).getData());
+		jobPosting.setEmployer(this.employerService.getById(jobPostingAddDto.getEmployerId()).getData());
+		jobPosting.setJobTitle(this.jobTitleService.get(jobPostingAddDto.getJobTitleId()).getData());
+		jobPosting.setWorkType(this.jobPostingDao.getById(jobPostingAddDto.getWorkTypeId()).getWorkType());
+		jobPosting.setWorkingTimes(this.jobPostingDao.getOne(jobPostingAddDto.getWorkingTimeId()).getWorkingTimes());
+		
+		this.jobPostingDao.save(jobPosting);
+		return new  SuccessResult(Message.addJobPosting);
+	}
+    
+    
 }
 
 

@@ -20,8 +20,6 @@ import java.util.Date;
 @Table(name="job_posting")
 public class JobPosting {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -50,9 +48,12 @@ public class JobPosting {
 
     @Column(name = "is_active")
     private boolean isActive;
+    
+    
+    @Column(name = "release_status")
+    private boolean releaseStatus;
 
-
-
+    
     @Column(name = "posted_date")
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
@@ -60,7 +61,7 @@ public class JobPosting {
 
 
 
-    @ManyToOne()
+	@ManyToOne()
 	@JoinColumn(name = "employer_id")
     private Employer employer;
 
@@ -82,5 +83,18 @@ public class JobPosting {
     @ManyToOne()
     @JoinColumn(name="work_time_id")
     private WorkingTime workingTimes;
+    
+    
+    public JobPosting(String jobDetails, double minWage, double maxWage, int numberOfOpenPositions, LocalDate lastApplyDate,
+			boolean isActive, Date postedDate) {
+		super();
+		this.jobDetails = jobDetails;
+		this.minWage = minWage;
+		this.maxWage = maxWage;
+		this.numberOfOpenPositions = numberOfOpenPositions;
+		this.lastApplyDate = lastApplyDate;
+		this.isActive = isActive;
+		this.postedDate = postedDate;
+	}
     
 }
