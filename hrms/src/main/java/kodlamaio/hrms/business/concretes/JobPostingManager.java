@@ -6,7 +6,12 @@ import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.business.abstracts.JobTitleService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.core.utilities.results.*;
+import kodlamaio.hrms.dataAccess.abstracts.CityDao;
+import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
+import kodlamaio.hrms.dataAccess.abstracts.JobTitleDao;
+import kodlamaio.hrms.dataAccess.abstracts.WorkTypeDao;
+import kodlamaio.hrms.dataAccess.abstracts.WorkingTimeDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingDto;
@@ -21,20 +26,26 @@ import java.util.List;
 public class JobPostingManager implements JobPostingService {
     private JobPostingDao jobPostingDao;
     private ModelMapper modelMapper;
-    private CityService cityService;
-    private EmployerService employerService;
-    private JobTitleService jobTitleService;
+    private CityDao cityDao;
+    private EmployerDao employerDao;
+    private JobTitleDao jobTitleDao;
+    private WorkTypeDao workTypeDao;
+    private WorkingTimeDao workingTimeDao;
     
     
     @Autowired
-    public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper, CityService cityService,
-			EmployerService employerService, JobTitleService jobTitleService) {
+    public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper, CityDao cityDao,
+    		EmployerDao employerDao, JobTitleDao jobTitleDao, WorkTypeDao workTypeDao,
+    		WorkingTimeDao workingTimeDao
+    		) {
 		super();
 		this.jobPostingDao = jobPostingDao;
 		this.modelMapper = modelMapper;
-		this.cityService = cityService;
-		this.employerService = employerService;
-		this.jobTitleService = jobTitleService;
+		this.cityDao = cityDao;
+		this.employerDao = employerDao;
+		this.jobTitleDao = jobTitleDao;
+		this.workTypeDao = workTypeDao;
+		this.workingTimeDao = workingTimeDao;
 	}
 
 	@Override
@@ -138,21 +149,16 @@ public DataResult<JobPosting> getById(int id) {
 	@Override
 	public Result add(JobPostingAddDto jobPostingAddDto) {
 		
-		JobPosting jobPosting = new JobPosting(
-				
-				jobPostingAddDto.getJobDetails(),
-				jobPostingAddDto.getMinWage(),
-				jobPostingAddDto.getMaxWage(),
-				jobPostingAddDto.getNumberOfOpenPositions(),
-				jobPostingAddDto.getLastApplyDate(),
-				jobPostingAddDto.isActive(),
-				jobPostingAddDto.getPostedDate()
-				);
+		JobPosting jobPosting = new JobPosting();
 		
-		jobPosting.setCity(cityService.getById(jobPostingAddDto.getCityId()).getData());
-		jobPosting.setEmployer(employerService.getById(jobPostingAddDto.getEmployerId()).getData());
-		jobPosting.setWorkType(jobPostingDao.getById(jobPostingAddDto.getWorkTypeId()).getWorkType());
-		jobPosting.setWorkingTimes(jobPostingDao.getById(jobPostingAddDto.getWorkingTimeId()).getWorkingTimes());
+		jobPosting.setCity(this.cityDao.findById(jobPostingAddDto.getCityId()));
+		jobPosting.setEmployer(this.employerDao.findById(jobPostingAddDto.getEmployerId()));
+		jobPosting.setWorkType(this.workTypeDao.getOne(jobPostingAddDto.getWorkTypeId()));
+		jobPosting.setWorkingTimes(this.workingTimeDao.getOne(jobPostingAddDto.getWorkingTimeId()));
+		jobPosting.setJobDetails(jobPostingAddDto.getJobDetails());
+		jobPosting.setJobTitle(this.jobTitleDao.getOne(jobPostingAddDto.getJobTitleId()));
+		jobPosting.setLastApplyDate(jobPostingAddDto.getLastApplyDate());
+
 		
 		this.jobPostingDao.save(jobPosting);
 		return new SuccessResult("İş ilanı eklendi");

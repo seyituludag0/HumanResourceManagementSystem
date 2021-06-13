@@ -49,8 +49,8 @@ public class JobPosting {
     private boolean isActive;
     
     
-    @Column(name = "release_status")
-    private boolean releaseStatus;
+//    @Column(name = "release_status")
+//    private boolean releaseStatus;
 
     
     @Column(name = "posted_date")
