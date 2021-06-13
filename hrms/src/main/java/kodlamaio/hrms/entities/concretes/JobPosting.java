@@ -1,4 +1,3 @@
-  
 package kodlamaio.hrms.entities.concretes;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name="job_posting")
+@Table(name="job_postings")
 public class JobPosting {
 
     @Id
@@ -96,5 +95,6 @@ public class JobPosting {
 		this.isActive = isActive;
 		this.postedDate = postedDate;
 	}
+    
     
 }

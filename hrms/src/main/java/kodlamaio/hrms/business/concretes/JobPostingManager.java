@@ -135,12 +135,9 @@ public DataResult<JobPosting> getById(int id) {
         return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByCity_Id(id),"Şehire göre iş ilanları listelendi");
     }
 
-	
-    
-    
-    
-    @Override
+	@Override
 	public Result add(JobPostingAddDto jobPostingAddDto) {
+		
 		JobPosting jobPosting = new JobPosting(
 				
 				jobPostingAddDto.getJobDetails(),
@@ -150,18 +147,23 @@ public DataResult<JobPosting> getById(int id) {
 				jobPostingAddDto.getLastApplyDate(),
 				jobPostingAddDto.isActive(),
 				jobPostingAddDto.getPostedDate()
-				
 				);
 		
-		jobPosting.setCity(this.cityService.getById(jobPostingAddDto.getCityId()).getData());
-		jobPosting.setEmployer(this.employerService.getById(jobPostingAddDto.getEmployerId()).getData());
-		jobPosting.setJobTitle(this.jobTitleService.get(jobPostingAddDto.getJobTitleId()).getData());
-		jobPosting.setWorkType(this.jobPostingDao.getById(jobPostingAddDto.getWorkTypeId()).getWorkType());
-		jobPosting.setWorkingTimes(this.jobPostingDao.getOne(jobPostingAddDto.getWorkingTimeId()).getWorkingTimes());
+		jobPosting.setCity(cityService.getById(jobPostingAddDto.getCityId()).getData());
+		jobPosting.setEmployer(employerService.getById(jobPostingAddDto.getEmployerId()).getData());
+		jobPosting.setWorkType(jobPostingDao.getById(jobPostingAddDto.getWorkTypeId()).getWorkType());
+		jobPosting.setWorkingTimes(jobPostingDao.getById(jobPostingAddDto.getWorkingTimeId()).getWorkingTimes());
 		
 		this.jobPostingDao.save(jobPosting);
-		return new  SuccessResult(Message.addJobPosting);
+		return new SuccessResult("İş ilanı eklendi");
+		
 	}
+
+	
+    
+    
+    
+   
     
     
 }
