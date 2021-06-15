@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes;
+ package kodlamaio.hrms.entities.concretes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -82,6 +83,12 @@ public class JobPosting {
     @ManyToOne()
     @JoinColumn(name="work_time_id")
     private WorkingTime workingTimes;
+    
+    @OneToOne(mappedBy ="jobPosting")
+    @JsonIgnore
+    private JobPostingConfirm jobPostingsConfirmId;
+    
+    
     
     
     public JobPosting(String jobDetails, double minWage, double maxWage, int numberOfOpenPositions, LocalDate lastApplyDate,

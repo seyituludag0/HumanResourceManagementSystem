@@ -3,6 +3,8 @@ package kodlamaio.hrms.entities.concretes.dtos;
 import java.time.LocalDate;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import kodlamaio.hrms.entities.concretes.WorkingTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JobPostingAddDto {
 
-private int id;
+//private int id;
 	
 	private int employerId;
 	
@@ -34,6 +36,7 @@ private int id;
 
     private int numberOfOpenPositions;
 
+    @JsonIgnore
     private Date postedDate;
 
     private LocalDate lastApplyDate;

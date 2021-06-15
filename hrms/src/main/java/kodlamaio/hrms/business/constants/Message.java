@@ -46,7 +46,7 @@ public class Message {
 //JobPosting
     public static String getAllJobPosting = "İş ilanları getirildi";
     public static String nullJobPosting = "İş ilanları listesi boş";
-    public static String addJobPosting = "İş ilanı eklendi";
+    public static String addJobPosting = "İlanınızın onaylanması bekleniyor.";
     public static String updateJobPosting = "İş ilanı güncellendi";
     public static String deleteJobPosting = "İş ilanı silindi";
     public static String getByisActiveTrue = "Tüm aktif ilanlar listelendi";
