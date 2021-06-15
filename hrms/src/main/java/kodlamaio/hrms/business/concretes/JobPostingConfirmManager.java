@@ -30,9 +30,10 @@ public class JobPostingConfirmManager implements JobPostingConfirmService{
 	}
 
 	@Override
-	public Result add(JobPostingConfirm jobPostingConfirm) {
-		 this.jobPostingConfirmDao.save(jobPostingConfirm);
-	        return new SuccessResult("İlan onaylandı");
+	public Result confirm(JobPostingConfirm jobPostingConfirm) {
+		this.jobPostingConfirmDao.save(jobPostingConfirm);
+		return new SuccessResult("Confirmed");
 	}
+
 	
 }

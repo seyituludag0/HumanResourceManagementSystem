@@ -5,6 +5,7 @@ import java.util.List;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import kodlamaio.hrms.entities.concretes.JobTitle;
 
 @RestController
 @RequestMapping("/api/jobtitles")
+@CrossOrigin
 public class JobTitlesController {
 	
 	private JobTitleService jobTitleService;

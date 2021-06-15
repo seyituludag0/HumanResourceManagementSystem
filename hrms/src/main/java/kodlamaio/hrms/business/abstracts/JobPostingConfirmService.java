@@ -9,6 +9,6 @@ import kodlamaio.hrms.entities.concretes.JobPostingConfirm;
 public interface JobPostingConfirmService {
 	
 	DataResult<List<JobPostingConfirm>> getAll();
-	Result add(JobPostingConfirm jobPostingConfirm);
+	Result confirm(JobPostingConfirm jobPostingConfirm);
 	
 }

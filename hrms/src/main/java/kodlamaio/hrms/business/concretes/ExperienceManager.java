@@ -11,6 +11,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ExperienceDao;
+import kodlamaio.hrms.entities.concretes.AbilityCandidate;
 import kodlamaio.hrms.entities.concretes.Experience;
 
 @Service
@@ -39,5 +40,12 @@ public class ExperienceManager implements ExperienceService{
 		this.experienceDao.save(experience);
 		return new SuccessResult("Tecrübe eklendi");
 	}
+
+	@Override
+	public DataResult<List<Experience>> getByCandidateId(int candidateId) {
+		return new SuccessDataResult<List<Experience>>(this.experienceDao.getByCandidate_Id(candidateId),"Adayın yetenekleri getirildi");
+	}
+
+	
 	
 }

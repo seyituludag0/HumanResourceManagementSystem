@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import kodlamaio.hrms.entities.concretes.AbilityCandidate;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.CvDetail;
+import kodlamaio.hrms.entities.concretes.Experience;
 import kodlamaio.hrms.entities.concretes.LanguageCandidate;
 import kodlamaio.hrms.entities.concretes.SchoolCandidate;
 import kodlamaio.hrms.entities.concretes.SocialMedia;
@@ -29,5 +30,6 @@ public class CvDto  {
     private List<WorkplaceCandidate> workplaceCandidate;
     private List<SocialMedia> socialMedias;
     private List<AbilityCandidate> abilityCandidates;
+    private List<Experience> experiences;
     private CvDetail cvDetail;
 }

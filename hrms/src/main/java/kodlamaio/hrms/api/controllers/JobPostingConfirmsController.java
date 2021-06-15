@@ -34,9 +34,9 @@ public class JobPostingConfirmsController {
 	}
 	
 
-	@PostMapping("/add")
+	@PostMapping("/confirm")
 	public ResponseEntity<?> add(@RequestBody JobPostingConfirm jobPostingConfirm){
-		return ResponseEntity.ok(this.jobPostingConfirmService.add(jobPostingConfirm));
+		return ResponseEntity.ok(this.jobPostingConfirmService.confirm(jobPostingConfirm));
 	}
 	
 	

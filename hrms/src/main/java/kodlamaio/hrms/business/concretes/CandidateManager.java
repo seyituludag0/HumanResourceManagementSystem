@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.business.abstracts.AbilityCandidateService;
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.business.abstracts.CvDetailService;
+import kodlamaio.hrms.business.abstracts.ExperienceService;
 import kodlamaio.hrms.business.abstracts.LanguageCandidateService;
 import kodlamaio.hrms.business.abstracts.SchoolCandidateService;
 import kodlamaio.hrms.business.abstracts.SocialMediaService;
 import kodlamaio.hrms.business.abstracts.WorkplaceCandidateService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
+import kodlamaio.hrms.dataAccess.abstracts.ExperienceDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.dtos.CvDto;
 import kodlamaio.hrms.mernisService.IdentityCheckerService;
@@ -32,13 +34,15 @@ public class CandidateManager implements CandidateService {
 	private WorkplaceCandidateService workplaceCandidateService;
 	private SocialMediaService socialMediaService;
 	private AbilityCandidateService abilityCandidateService;
+//	private ExperienceDao experienceDao;
+	private ExperienceService experienceService;
 	private CvDetailService cvDetailService;
 
 	@Autowired
 	public CandidateManager(CandidateDao candidateDao, EmailAdapter emailAdapter,
 			IdentityCheckerService identityCheckerService, SchoolCandidateService schoolCandidateService,
 			LanguageCandidateService languageCandidateService, WorkplaceCandidateService workplaceCandidateService,
-			SocialMediaService socialMediaService, AbilityCandidateService abilityCandidateService,
+			SocialMediaService socialMediaService, AbilityCandidateService abilityCandidateService, ExperienceService experienceService,
 			CvDetailService cvDetailService) {
 		this.candidateDao = candidateDao;
 		this.workplaceCandidateService = workplaceCandidateService;
@@ -47,6 +51,7 @@ public class CandidateManager implements CandidateService {
 		this.languageCandidateService = languageCandidateService;
 		this.abilityCandidateService = abilityCandidateService;
 		this.cvDetailService = cvDetailService;
+		this.experienceService = experienceService;
 		this.identityCheckerService = identityCheckerService;
 		this.emailAdapter = emailAdapter;
 		}
@@ -63,6 +68,9 @@ public class CandidateManager implements CandidateService {
 		cvDto.setLanguageCandidates(this.languageCandidateService.getByCandidateId(candidateId).getData());
 		cvDto.setAbilityCandidates(this.abilityCandidateService.getByCandidateId(candidateId).getData());
 		cvDto.setAbilityCandidates(this.abilityCandidateService.getByCandidateId(candidateId).getData());
+		
+		cvDto.setExperiences(this.experienceService.getByCandidateId(candidateId).getData());
+		
 		cvDto.setCvDetail(this.cvDetailService.getByCandidateId(candidateId).getData());
 
 		return new SuccessDataResult<CvDto>(cvDto, "Cv getirildi");
