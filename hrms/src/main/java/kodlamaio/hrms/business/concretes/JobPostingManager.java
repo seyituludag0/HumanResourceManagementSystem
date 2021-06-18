@@ -140,6 +140,31 @@ public DataResult<JobPosting> getById(int id) {
 		}
 	}
 
+
+	
+	@Override
+	public Result changeActiveByEmployee(int jobPostingId) {
+		JobPosting jobAdvertToChangeIsOpen =this.jobPostingDao.getById(jobPostingId);      
+		 jobAdvertToChangeIsOpen.setActive(!jobAdvertToChangeIsOpen.isActive()); 
+		 this.jobPostingDao.save(jobAdvertToChangeIsOpen);  
+		 return new SuccessResult("İş ilanının iş veren tarafından tarafından aktifliği değiştirildi"); 
+	}
+	
+	
+	@Override
+	public Result changeIsActiveByEmployer(int jobPostingId) {
+		// İş verenin aktiflik değiştireceği
+		JobPosting jobPostingToChangeIsActive =this.jobPostingDao.getById(jobPostingId);
+		jobPostingToChangeIsActive.setOpenEmployer(!jobPostingToChangeIsActive.isOpenEmployer());
+		this.jobPostingDao.save(jobPostingToChangeIsActive);
+		return new SuccessResult("İş ilanı iş veren tarafından tarafından aktifliği değiştirildi");
+    
+    
+	}
+	
+	
+	
+	
     @Override
     public DataResult<List<JobPosting>> getAllByCity_Name(String name) {
         return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByCity_Name(name),"Şehire göre iş ilanları listelendi");
@@ -166,25 +191,54 @@ public DataResult<JobPosting> getById(int id) {
 		jobPosting.setMinWage(jobPostingAddDto.getMinWage());
 		jobPosting.setMaxWage(jobPostingAddDto.getMaxWage());
 
+		jobPosting.setOpenEmployer(true);
 
-		
 		this.jobPostingDao.save(jobPosting);
 		
-		
-		
-
 		
 		return new SuccessResult("İş ilanı eklendi");
 		
 	}
 
+//	/////////////////////////////////////////////////////////////////////////////////////////////
+	@Override
+	public DataResult<List<JobPosting>> getAllOpenJobPostingList() {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllOpenJobPostingList());
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc() {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateAsc());
+	}
 	
-    
-    
-    
-   
-    
-    
+	@Override
+	public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc() {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateDesc());
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> getAllOpenJobPostingByEmployer(int id) {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllOpenJobPostingByEmployer(id));
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> getAllByIsActiveByEmployee() {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByIsActiveByEmployer());
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> getAllByIsActiveByEmployee_False() {
+		// Açık olan iş ilanlarını admin görecek sadece kendi sisteminden onaylamak için
+	return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByIsActiveByEmployee_False());
+	}
+
+	
+	@Override
+	public DataResult<List<JobPosting>> getAllJobPostingByEmployer(int id) {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByEmployerId(id), "İş ilanları employer id'sine göre listelendi");
+	}
+
+	
 }
 
 

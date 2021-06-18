@@ -13,6 +13,7 @@ import kodlamaio.hrms.entities.concretes.WorkingTime;
 @NoArgsConstructor
 @Data
 public class JobPostingDto {
+	private int id;
 
 	private String companyName;
 

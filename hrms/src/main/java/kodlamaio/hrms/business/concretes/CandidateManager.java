@@ -131,6 +131,12 @@ public class CandidateManager implements CandidateService {
 		}
 	}
 
+	@Override
+	public DataResult<List<CvDto>> getCandidatesCv() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

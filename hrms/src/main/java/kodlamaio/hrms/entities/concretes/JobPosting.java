@@ -85,9 +85,10 @@ public class JobPosting {
     private WorkingTime workingTimes;
     
     @OneToOne(mappedBy ="jobPosting")
-    @JsonIgnore
     private JobPostingConfirm jobPostingsConfirmId;
     
+    @Column(name="is_open_employer")
+    private boolean isOpenEmployer;
     
     
     

@@ -15,6 +15,8 @@ public interface JobPostingService {
     Result delete(int id);
 
     Result setActivetoPassive(int id);
+    
+    Result changeActiveByEmployee(int id);
 
     DataResult<List<JobPostingDto>> getByIsActiveTrue();
     DataResult<List<JobPostingDto>> getByIsActiveTrueOrderByPostedDate();
@@ -22,7 +24,35 @@ public interface JobPostingService {
 
     DataResult<JobPosting> getById(int id);
     
+    Result changeIsActiveByEmployer(int jobPostingId);
+    
+    DataResult<List<JobPosting>> getAllJobPostingByEmployer(int id);
+    
     DataResult<List<JobPosting>> getAllByCity_Name(String name);
 
     DataResult<List<JobPosting>> getAllByCity_Id(int id);
+    
+
+    DataResult<List<JobPosting>> getAllOpenJobPostingList();
+    
+    DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc();
+    
+    DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc();
+    
+    DataResult<List<JobPosting>> getAllOpenJobPostingByEmployer(int id);
+    
+    DataResult<List<JobPosting>> getAllByIsActiveByEmployee();
+    
+    DataResult<List<JobPosting>> getAllByIsActiveByEmployee_False();
+    
+//    DataResult<List<JobPosting>> getAllByIsActiveAndIsOpen_False();
+
+
+//    DataResult<List<JobPosting>> getAllByIsActiveByEmployee_False();
+
+//    DataResult<List<JobPosting>> getAllOpenAndFalseJobPostingList();
+    
+
+    
 }
+

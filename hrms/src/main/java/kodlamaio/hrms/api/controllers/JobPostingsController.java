@@ -53,18 +53,33 @@ public class JobPostingsController {
         return this.jobPostingService.getByIsActiveTrueOrderByPostedDate();
     }
     
+    @GetMapping("getAllJobPostingByEmployer")
+    public DataResult<List<JobPosting>> getAllJobPostingByEmployer(@RequestParam int id){
+        return this.jobPostingService.getAllJobPostingByEmployer(id);
+    }
+    
     @GetMapping("getByisActiveTrueAndEmployer_companyName")
     public DataResult<List<JobPostingDto>> getByIsActiveTrueAndEmployer_companyName(String companyName){
         return this.jobPostingService.getByIsActiveTrueAndEmployer_companyName(companyName);
     }
     
-	@PostMapping("/setActivetoPassive")
+    @PostMapping("/changeIsActiveByEmployer")
+	public Result changeIsActiveByEmployer(@RequestParam int id) {
+		return this.jobPostingService.changeIsActiveByEmployer(id);
+	}
+    
+    @PostMapping("/setActivetoPassive")
 	public Result setActivetoPassive(@RequestParam int id) {
 		return this.jobPostingService.setActivetoPassive(id);
 	}
+    
+    @PostMapping("/changeActiveByEmployee")
+	public Result setPassivetoActive(@RequestParam int id) {
+		return this.jobPostingService.changeActiveByEmployee(id);
+	}
 
-    @GetMapping("/getById/{id}")
-    public DataResult<JobPosting> getById(@PathVariable("id") int id){
+    @GetMapping("/getById")
+    public DataResult<JobPosting> getById(@RequestParam int id){
     	return this.jobPostingService.getById(id);
     }
 
@@ -79,23 +94,39 @@ public class JobPostingsController {
         return this.jobPostingService.getAllByCity_Id(id);
     }
     
-
+////////////////////////////////////////////////////////////////////////////////////////
     
+    @GetMapping("getAllOpenJobPostingList")
+    public DataResult<List<JobPosting>> getAllOpenJobPostingList(){
+    	return this.jobPostingService.getAllOpenJobPostingList();
+    }
+    
+    @GetMapping("findAllByOrderByPostedDateAsc")
+    public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc() {
+    	return this.jobPostingService.findAllByOrderByPostedDateAsc();
+    }
+    
+    @GetMapping("findAllByOrderByPostedDateDesc")
+    public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc() {
+    	return this.jobPostingService.findAllByOrderByPostedDateDesc();
+    }
+    
+    
+    @GetMapping("getAllOpenJobPostingByEmployer")
+    public DataResult<List<JobPosting>> getAllOpenJobPostingByEmployer(@RequestParam int id){
+    	return this.jobPostingService.getAllOpenJobPostingByEmployer(id);
+    }
+    
+    @GetMapping("getAllByIsActiveByEmployee")
+    public DataResult<List<JobPosting>> getAllByIsActiveByEmployee(){
+    	return this.jobPostingService.getAllByIsActiveByEmployee();
+    }
+    
+    
+    @GetMapping("getAllOpenJobPostingsAndIsActiveFalse")
+    public DataResult<List<JobPosting>> getAllByIsActiveByEmployee_False(){
+    	return this.jobPostingService.getAllByIsActiveByEmployee_False();
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
