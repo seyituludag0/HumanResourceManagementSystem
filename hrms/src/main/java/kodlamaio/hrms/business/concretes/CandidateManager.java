@@ -17,7 +17,6 @@ import kodlamaio.hrms.business.abstracts.SocialMediaService;
 import kodlamaio.hrms.business.abstracts.WorkplaceCandidateService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
-import kodlamaio.hrms.dataAccess.abstracts.ExperienceDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.dtos.CvDto;
 import kodlamaio.hrms.mernisService.IdentityCheckerService;
@@ -135,6 +134,11 @@ public class CandidateManager implements CandidateService {
 	public DataResult<List<CvDto>> getCandidatesCv() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public DataResult<Candidate> getById(int id) {
+		return new SuccessDataResult<Candidate>(this.candidateDao.getOne(id));
 	}
 
 	

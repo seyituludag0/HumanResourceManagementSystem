@@ -2,7 +2,14 @@ package kodlamaio.hrms.business.constants;
 
 
 public class Message {
-    //	JobTitle
+//	Fake Mernis	
+	public static String verificationFailed = "Doğrulama başarısız oldu";
+	
+	// Register
+	public static String successRegistered = "Kayıt başarıyla tamamlandı. Doğrulama kodu gönderiliyor...";
+	
+	
+//	JobTitle
     public static String getAllJobTitle = "İş başlıkları listelendi";
     public static String getJobTitle = "İş bilgileri getirildi";
     public static String addJobTitle = "İş eklendi";
@@ -11,7 +18,7 @@ public class Message {
 
 // Candidate
 
-    public static String addCandidate = "Aday eklendi";
+    public static String addCandidate = "Kayıt başarıyla tamamlandı. Emailinize doğrulama kodu gönderildi...";
     public static String getAllCandidate = "Adaylar getirildi";
     public static String getNullCandidate = "Adaylar listesi boş";
     public static String updateCandidate = "Aday güncellendi";
@@ -26,6 +33,8 @@ public class Message {
 //Employer
     public static String getAllEmployer = "İşverenler getirildi";
     public static String addEmployer = "İşveren eklendi";
+    public static String emailVerificationFailed = "Mail adresi uzantısı ile web sitesinin alan adı uyuşmuyor";
+    public static String checkNullFields = "Lütfen tüm alanları eksiksiz doldurun";
     
 
 //Employee
@@ -63,6 +72,17 @@ public class Message {
 	public static String checkIfEmployerEmail = "Emailiniz şirketinize ait bir domain içermelidir";
 	public static String sendedActivationCode = "Aktivasyon kodu gönderildi";
 	public static String verifiedActivationCode = "Aktivasyon kodu doğrulandı";
+	
+	
+	
+	
+//
+	
+	
+	
+	
+	
+	
 }
 
 

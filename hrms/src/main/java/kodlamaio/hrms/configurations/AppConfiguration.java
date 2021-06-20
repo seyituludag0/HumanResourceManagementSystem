@@ -1,5 +1,6 @@
 package kodlamaio.hrms.configurations;
 
+
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,5 +23,7 @@ public class AppConfiguration {
                 "api_key", "994322474216427",
                 "api_secret", "_SufDKuLM2Q-4pnZd3KXOATYylE"));
     }
+	
+	
 	
 }

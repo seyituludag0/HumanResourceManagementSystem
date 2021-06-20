@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,13 @@ public class AuthController {
 	}
 	
 	@PostMapping("/registerEmployer")
-	public Result registerEmpolyer(@Valid @RequestBody Employer employer)
+	public Result registerEmpolyer(@Valid @RequestBody Employer employer) throws MessagingException
 	{
 		return authService.registerEmployer(employer);
 	}
 	
 	@PostMapping("/registerCandidate")
-	public Result registerCandidate(@Valid @RequestBody Candidate candidate)
+	public Result registerCandidate(@Valid @RequestBody Candidate candidate) throws MessagingException
 	{
 		return authService.registerCandidate(candidate);
 	}

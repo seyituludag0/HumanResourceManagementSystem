@@ -42,5 +42,4 @@ public class ActivationCode {
 		this.isVerified = isVerified;
 		this.verifiedDate = verifiedDate;
 	}
-	
 }

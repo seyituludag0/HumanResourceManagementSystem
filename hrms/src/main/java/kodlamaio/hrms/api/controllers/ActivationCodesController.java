@@ -10,7 +10,7 @@ import kodlamaio.hrms.business.abstracts.ActivationCodeService;
 import kodlamaio.hrms.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/verificationCodes")
+@RequestMapping("/api/activationCodes")
 public class ActivationCodesController {
 
 	@Autowired

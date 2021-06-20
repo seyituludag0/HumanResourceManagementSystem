@@ -12,6 +12,9 @@ public interface CandidateService {
 	Result add(Candidate candidate);
 	Result update(Candidate candidate);
 	Result delete(int id);
+	
+	DataResult<Candidate> getById(int id);
+	
 	Result isIdentityNumberExist(String identityNumber);
 	
 	DataResult<CvDto> getCandidateCvByCandidateId(int candidateId);

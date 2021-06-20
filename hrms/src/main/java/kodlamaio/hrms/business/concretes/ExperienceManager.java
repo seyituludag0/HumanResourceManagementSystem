@@ -11,7 +11,6 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ExperienceDao;
-import kodlamaio.hrms.entities.concretes.AbilityCandidate;
 import kodlamaio.hrms.entities.concretes.Experience;
 
 @Service

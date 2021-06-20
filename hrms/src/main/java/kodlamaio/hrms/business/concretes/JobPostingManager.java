@@ -1,20 +1,15 @@
 package kodlamaio.hrms.business.concretes;
 
-import kodlamaio.hrms.business.abstracts.CityService;
-import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.abstracts.JobPostingService;
-import kodlamaio.hrms.business.abstracts.JobTitleService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.core.utilities.results.*;
 import kodlamaio.hrms.dataAccess.abstracts.CityDao;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
-import kodlamaio.hrms.dataAccess.abstracts.JobPostingConfirmDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobTitleDao;
 import kodlamaio.hrms.dataAccess.abstracts.WorkTypeDao;
 import kodlamaio.hrms.dataAccess.abstracts.WorkingTimeDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
-import kodlamaio.hrms.entities.concretes.JobPostingConfirm;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingDto;
 import org.modelmapper.ModelMapper;
@@ -33,14 +28,13 @@ public class JobPostingManager implements JobPostingService {
     private JobTitleDao jobTitleDao;
     private WorkTypeDao workTypeDao;
     private WorkingTimeDao workingTimeDao;
-    private JobPostingConfirmDao jobPostingConfirmDao; 
     
     
     @Autowired
     public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper, CityDao cityDao,
-    		EmployerDao employerDao, JobTitleDao jobTitleDao, WorkTypeDao workTypeDao, JobPostingConfirmDao jobPostingConfirmDao,
-    		WorkingTimeDao workingTimeDao
-    		) {
+    		EmployerDao employerDao, JobTitleDao jobTitleDao, WorkTypeDao workTypeDao,
+    		WorkingTimeDao workingTimeDao)
+    		 {
 		super();
 		this.jobPostingDao = jobPostingDao;
 		this.modelMapper = modelMapper;
@@ -49,8 +43,7 @@ public class JobPostingManager implements JobPostingService {
 		this.jobTitleDao = jobTitleDao;
 		this.workTypeDao = workTypeDao;
 		this.workingTimeDao = workingTimeDao;
-		this.jobPostingConfirmDao = jobPostingConfirmDao;
-	}
+		}
 
 	@Override
     public DataResult<List<JobPosting>> getAll() {
@@ -110,13 +103,7 @@ public class JobPostingManager implements JobPostingService {
 
     }
 
-    private boolean checkIfNullField(JobPosting jobPosting){
-        if (jobPosting.getJobTitle() != null && jobPosting.getJobDetails() != null && jobPosting.getCity() != null
-        && jobPosting.getNumberOfOpenPositions() != 0){
-            return true;
-        }
-        return false;
-    }
+    
 
 	@Override
 public DataResult<JobPosting> getById(int id) {
