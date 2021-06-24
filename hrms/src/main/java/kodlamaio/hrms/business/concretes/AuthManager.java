@@ -1,7 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
-
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.mail.MessagingException;
@@ -29,67 +28,46 @@ import kodlamaio.hrms.mernisService.IdentityCheckerService;
 @Service
 public class AuthManager implements AuthService {
 	private CandidateService candidateService;
+	private CandidateDao candidateDao;
 	private EmployerService employerService;
 	private ActivationCodeService activationCodeService;
 	private IdentityCheckerService identityCheckerService;
-	
-	
+
 	@Autowired
 	EmailSenderService emailSenderService;
 
 	public AuthManager(EmployeeService employeeService, EmployerService employerService,
-			ActivationCodeService activationCodeService,
-			IdentityCheckerService identityCheckerService,CandidateDao candidateDao, CandidateService candidateService) {
+			ActivationCodeService activationCodeService, IdentityCheckerService identityCheckerService,
+			CandidateDao candidateDao, CandidateService candidateService) {
 		this.candidateService = candidateService;
+		this.candidateDao = candidateDao;
 		this.employerService = employerService;
 		this.activationCodeService = activationCodeService;
 		this.identityCheckerService = identityCheckerService;
 
 	}
-
+	
 	@Override
 	public Result registerCandidate(Candidate candidate) throws MessagingException {
-
 		Result result = BusinessRules.run(fakeMernisControl(candidate.getFirstName(), candidate.getLastName(),
-				candidate.getIdentityNumber(), candidate.getBirthYear()),
+				candidate.getIdentityNumber(), candidate.getBirthDate()),
 				isIdentityNumberExist(candidate.getIdentityNumber()));
 		if (result != null) {
 			return result;
 		}
-
 		
+		
+
 		candidateService.add(candidate);
 		String code = activationCodeService.sendCode();
 		verificationCodeRecord(code, candidate.getId(), candidate.getEmail());
-		emailSenderService.sendEmailWithAttachment(candidate.getEmail(), "Doğrulama Kodunuz : " + code, "HRMS - Human Resources Manager System | Hesap Doğrulama",
-				"C:\\Users\\Seyit\\Desktop\\hrms_logo.jpg");
+		emailSenderService.sendSimpleEmail(candidate.getEmail(), "Doğrulama Kodunuz : " + code,
+				"HRMS - Human Resources Manager System | Hesap Doğrulama");
 		return new SuccessResult("Doğrulama kodu " + candidate.getEmail() + " email adresine gönderildi");
 	}
-
-		private void verificationCodeRecord(String code, int id, String email) {
-		
-			ActivationCode activationCode = new ActivationCode(id, code, false, LocalDateTime.now());
-			this.activationCodeService.save(activationCode);
-			
 	
-	}
 	
-	private Result isIdentityNumberExist(String identityNumber) {
-		if (this.candidateService.isIdentityNumberExist(identityNumber).isSuccess()) {
-
-			return new SuccessResult();
-		}
-		return new ErrorResult(Message.identityNumberAlreadyRegistered);
-	}
-
-	private Result fakeMernisControl(String identityNumber, String firstName, String lastName, String birthYear) {
-
-		if (this.identityCheckerService.fakeMernisControl(identityNumber, firstName, lastName, birthYear)) {
-			return new SuccessResult();
-		}
-		return new ErrorResult(Message.verificationFailed);
-	}
-
+	
 	@Override
 	public Result registerEmployer(Employer employer) throws MessagingException {
 
@@ -100,19 +78,60 @@ public class AuthManager implements AuthService {
 			return result;
 		}
 		this.employerService.add(employer);
-		
-		return new SuccessResult(Message.successRegistered);
+		String code = activationCodeService.sendCode();
+		verificationCodeRecord(code, employer.getId(), employer.getEmail());
+		emailSenderService.sendEmailWithAttachment(employer.getEmail(), "Doğrulama Kodunuz : " + code,
+				"HRMS - Human Resources Manager System | Hesap Doğrulama", "C:\\Users\\Seyit\\Desktop\\hrms_logo.jpg");
+		return new SuccessResult("Doğrulama kodu " + employer.getEmail() + " email adresine gönderildi");
+	}
+
+////////////////////////////////////////	private methods  	////////////////////////////////////////////////////////////////////////
+
+	private void verificationCodeRecord(String code, int id, String email) {
+
+		ActivationCode activationCode = new ActivationCode(id, code, false, LocalDateTime.now());
+		this.activationCodeService.save(activationCode);
+	}
+
+
+//	private Result checkRePassword(String password, String rePassword) {
+//		if(!password.equals(rePassword)) {
+//			System.out.println("Şifreler eşleşmiyor");
+//			return new ErrorResult();
+//		}
+//		System.out.println("Şifreler eşleşti");
+//		return new SuccessResult();
+//	}
+
+	
+	
+	
+
+	private Result fakeMernisControl(String identityNumber, String firstName, String lastName, LocalDate birthYear) {
+
+		if (this.identityCheckerService.fakeMernisControl(identityNumber, firstName, lastName, birthYear)) {
+			return new SuccessResult();
+		}
+		return new ErrorResult(Message.verificationFailed);
+	}
+
+	private Result isIdentityNumberExist(String identityNumber) {
+		if (this.candidateService.isIdentityNumberExist(identityNumber).isSuccess()) {
+
+			return new SuccessResult();
+		}
+		return new ErrorResult(Message.identityNumberAlreadyRegistered);
 	}
 
 	private Result checkIfEqualEmailAndDomain(String email, String webAddress) {
-		String[] emailArray = email.split("@", 2);
-		String domain = webAddress.substring(4,webAddress.length());
-		
-		if(emailArray[1].equals(domain)) {
-			return new SuccessResult();
-		}
-		return new ErrorResult(Message.emailVerificationFailed);
-		
+//		String[] emailArray = email.split("@", 2);
+//		String domain = webAddress.substring(4, webAddress.length());
+//
+//		if (emailArray[1].equals(domain)) {
+//			return new SuccessResult();
+//		}
+		return new SuccessResult(Message.emailVerificationFailed);
+
 	}
 
 	private Result checkNullFieldsForEmployer(Employer employer) {
@@ -123,8 +142,4 @@ public class AuthManager implements AuthService {
 		}
 		return new ErrorResult(Message.checkNullFields);
 	}
-	
-	
-
-
 }

@@ -1,12 +1,13 @@
 package kodlamaio.hrms.entities.concretes;
 
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 
 import lombok.AllArgsConstructor;
@@ -33,9 +34,9 @@ public class Candidate extends User{
 	@Column(name="identity_number")
 	private String identityNumber;
 	
-	@Size(min = 4, max = 4, message = "Doğum yılı 4 hane olmak zorundadır")
-	@Column(name="birth_year")
-	private String birthYear;	
+	
+	@Column(name="birth_date")
+	private LocalDate birthDate;	
 	
 	
 	

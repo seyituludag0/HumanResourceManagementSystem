@@ -1,7 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.util.UUID;
 
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,6 @@ public class ActivationCodeManager implements ActivationCodeService {
 
 	@Autowired
 	EmailSenderService emailSenderService;
-	
 
 	@Autowired
 	public ActivationCodeManager(ActivationCodeDao activationCodeDao) {
@@ -35,9 +34,15 @@ public class ActivationCodeManager implements ActivationCodeService {
 		ActivationCode activationCode = this.activationCodeDao.findByCode(code);
 		activationCode.setVerified(true);
 		this.activationCodeDao.save(activationCode);
+		System.out.println("Hesabınız doğrulandı");
+//		AccountVerified();
 		return new SuccessResult(Message.verifiedActivationCode);
 	}
 
+//	private void AccountVerified() {
+//			emailSenderService.sendSimpleEmail("bnfcgs2@gmail.com", "Hesabınız doğrulandı", "HRMS - Human Resources Manager System | BİLGİLENDİRME");
+//	}
+	
 	@Override
 	public void sendLink(String email) {
 		UUID uuid = UUID.randomUUID();

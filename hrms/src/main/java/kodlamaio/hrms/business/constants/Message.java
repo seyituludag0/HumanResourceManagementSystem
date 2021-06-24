@@ -3,7 +3,7 @@ package kodlamaio.hrms.business.constants;
 
 public class Message {
 //	Fake Mernis	
-	public static String verificationFailed = "Doğrulama başarısız oldu";
+	public static String verificationFailed = "Doğrulama başarısız oldu. Lütfen bilgilerinizi kontrol ediniz";
 	
 	// Register
 	public static String successRegistered = "Kayıt başarıyla tamamlandı. Doğrulama kodu gönderiliyor...";
@@ -71,7 +71,7 @@ public class Message {
 	public static String jobPostingActived = "İş ilanı aktif hale getirildi";
 	public static String checkIfEmployerEmail = "Emailiniz şirketinize ait bir domain içermelidir";
 	public static String sendedActivationCode = "Aktivasyon kodu gönderildi";
-	public static String verifiedActivationCode = "Aktivasyon kodu doğrulandı";
+	public static String verifiedActivationCode = "Hesabınız aktifleştirildi";
 	
 	
 	

@@ -87,7 +87,7 @@ public class CandidateManager implements CandidateService {
 	@Override
 	public Result add(Candidate candidate) {
 		if (!identityCheckerService.fakeMernisControl(candidate.getFirstName(), candidate.getLastName(),
-				candidate.getIdentityNumber(), candidate.getBirthYear())) {
+				candidate.getIdentityNumber(), candidate.getBirthDate())) {
 			return new ErrorResult("Kimlik doğrulanamadı");
 		} else if (isMailExists(candidate.getEmail())) {
 			return new ErrorResult(Message.emailAlreadyRegistered);
@@ -140,6 +140,8 @@ public class CandidateManager implements CandidateService {
 	public DataResult<Candidate> getById(int id) {
 		return new SuccessDataResult<Candidate>(this.candidateDao.getOne(id));
 	}
+
+	
 
 	
 

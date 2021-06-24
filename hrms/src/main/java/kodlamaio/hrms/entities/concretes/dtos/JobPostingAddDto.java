@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JobPostingAddDto {
 
-//private int id;
-	
 	private int employerId;
 	
 	private int cityId;
@@ -39,12 +37,5 @@ public class JobPostingAddDto {
     private Date postedDate;
 
     private LocalDate lastApplyDate;
-    
-    private boolean isActive;
-    
-    
-//    private String companyName;
-//
-//    private String jobTitle;
-	
+   	
 }

@@ -1,5 +1,7 @@
 package kodlamaio.hrms.mernisService;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Service;
 
 
@@ -14,7 +16,7 @@ public  class  IdentityChecker implements IdentityCheckerService {
 
 	
 	@Override
-	public boolean fakeMernisControl(String firstName, String lastName, String identityNumber, String birthYear) {
+	public boolean fakeMernisControl(String firstName, String lastName, String identityNumber, LocalDate birthYear) {
 
 		if (fakeMernis.fakeMernisControl(firstName, lastName, identityNumber, birthYear)) 
 		{			
