@@ -9,7 +9,7 @@ import kodlamaio.hrms.entities.concretes.Experience;
 import kodlamaio.hrms.entities.concretes.LanguageCandidate;
 import kodlamaio.hrms.entities.concretes.SchoolCandidate;
 import kodlamaio.hrms.entities.concretes.SocialMedia;
-import kodlamaio.hrms.entities.concretes.WorkplaceCandidate;
+import kodlamaio.hrms.entities.concretes.WorkPlaceCandidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class CvDto  {
 
     private List<SchoolCandidate> schoolCandidates;
     private List<LanguageCandidate> languageCandidates;
-    private List<WorkplaceCandidate> workplaceCandidate;
+    private List<WorkPlaceCandidate> workPlaceCandidate;
     private List<SocialMedia> socialMedias;
     private List<AbilityCandidate> abilityCandidates;
     private List<Experience> experiences;

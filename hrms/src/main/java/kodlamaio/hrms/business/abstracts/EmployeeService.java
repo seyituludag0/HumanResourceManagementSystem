@@ -8,6 +8,7 @@ import kodlamaio.hrms.entities.concretes.Employee;
 
 public interface EmployeeService {
 	DataResult<List<Employee>> getAll();
+	DataResult<Employee> getById(int id);
 	Result add(Employee employee);
 	Result update(Employee employee);
 	Result delete(int id);

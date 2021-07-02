@@ -9,5 +9,5 @@ import kodlamaio.hrms.entities.concretes.AbilityCandidate;
 public interface AbilityCandidateDao extends JpaRepository<AbilityCandidate, Integer>{
 
 	List<AbilityCandidate> getByCandidate_Id(int candidateId);
-	
+	AbilityCandidate findById(int id);
 }

@@ -6,4 +6,6 @@ import kodlamaio.hrms.entities.concretes.Language;
 
 public interface LanguageDao extends JpaRepository<Language, Integer>{
 
+	Language findById(int id);
+	
 }

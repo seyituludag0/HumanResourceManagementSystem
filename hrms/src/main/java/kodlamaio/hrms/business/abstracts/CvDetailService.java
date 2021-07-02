@@ -13,6 +13,7 @@ public interface CvDetailService {
 	DataResult<List<CvDetail>> getAll();
 	DataResult<CvDetail> getByCandidateId(int candidateId);
 	Result add(CvDetail cvDetail);
+	Result update(CvDetail cvDetail);
 	
 	Result uploadPhoto(int candidateId, MultipartFile file);
 	

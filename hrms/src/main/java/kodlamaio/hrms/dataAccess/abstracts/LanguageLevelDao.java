@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlamaio.hrms.entities.concretes.LanguageLevel;
 
-public interface LanguageLevelDao extends JpaRepository<LanguageLevel, Integer>{
-
+public interface LanguageLevelDao extends JpaRepository<LanguageLevel, Integer> {
+	LanguageLevel findById(int id);
 }

@@ -4,11 +4,12 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Workplace;
+import kodlamaio.hrms.entities.concretes.WorkPlace;
 
 public interface WorkplaceService {
 
-	DataResult<List<Workplace>> getAll();
-	Result add(Workplace workplace);
+	DataResult<List<WorkPlace>> getAll();
+	Result add(WorkPlace workplace);
+	Result update(WorkPlace workplace);
 	
 }

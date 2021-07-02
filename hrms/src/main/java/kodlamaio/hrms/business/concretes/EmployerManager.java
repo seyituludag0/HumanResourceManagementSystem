@@ -29,8 +29,6 @@ public class EmployerManager implements EmployerService {
     @Override
     public Result add(Employer employer) {
 
-
-
     	if(!isRealEmail(employer)){
             return new ErrorDataResult<Employer>(null, Message.checkYourEmail);
         }
@@ -39,6 +37,12 @@ public class EmployerManager implements EmployerService {
         }
         this.employerDao.save(employer);
         return new SuccessResult(Message.addEmployer);
+    }
+
+    @Override
+    public Result update(Employer employer) {
+        this.employerDao.save(employer);
+        return new SuccessResult("Güncellendi");
     }
 
     @Override
@@ -70,7 +74,26 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public DataResult<Employer> getById(int id) {
-		return new SuccessDataResult<Employer>(this.employerDao.findById(id), "İş veren getirildi");
+		return new SuccessDataResult<Employer>(this.employerDao.getOne(id), "İş veren getirildi");
+	}
+
+	@Override
+	public Result statusChangeConfirmedByEmployee(int employerId) {
+		Employer employer = this.employerDao.findById(employerId);
+		System.out.println(employer);
+		employer.setVerified(!employer.isVerified());
+		this.employerDao.save(employer);
+		return new SuccessResult("Şirketin Doğrulanma durumu değiştirildi");
+	}
+
+	@Override
+	public long countById(int id) {
+		return this.employerDao.countById(id);
+	}
+
+	@Override
+	public long countGetAll() {
+		return this.employerDao.count();
 	}
 
    	

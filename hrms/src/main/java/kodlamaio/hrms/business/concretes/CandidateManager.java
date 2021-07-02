@@ -14,7 +14,7 @@ import kodlamaio.hrms.business.abstracts.ExperienceService;
 import kodlamaio.hrms.business.abstracts.LanguageCandidateService;
 import kodlamaio.hrms.business.abstracts.SchoolCandidateService;
 import kodlamaio.hrms.business.abstracts.SocialMediaService;
-import kodlamaio.hrms.business.abstracts.WorkplaceCandidateService;
+import kodlamaio.hrms.business.abstracts.WorkPlaceCandidateService;
 import kodlamaio.hrms.business.constants.Message;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
@@ -30,7 +30,7 @@ public class CandidateManager implements CandidateService {
 
 	private SchoolCandidateService schoolCandidateService;
 	private LanguageCandidateService languageCandidateService;
-	private WorkplaceCandidateService workplaceCandidateService;
+	private WorkPlaceCandidateService workPlaceCandidateService;
 	private SocialMediaService socialMediaService;
 	private AbilityCandidateService abilityCandidateService;
 //	private ExperienceDao experienceDao;
@@ -40,11 +40,11 @@ public class CandidateManager implements CandidateService {
 	@Autowired
 	public CandidateManager(CandidateDao candidateDao, EmailAdapter emailAdapter,
 			IdentityCheckerService identityCheckerService, SchoolCandidateService schoolCandidateService,
-			LanguageCandidateService languageCandidateService, WorkplaceCandidateService workplaceCandidateService,
+			LanguageCandidateService languageCandidateService, WorkPlaceCandidateService workPlaceCandidateService,
 			SocialMediaService socialMediaService, AbilityCandidateService abilityCandidateService, ExperienceService experienceService,
 			CvDetailService cvDetailService) {
 		this.candidateDao = candidateDao;
-		this.workplaceCandidateService = workplaceCandidateService;
+		this.workPlaceCandidateService = workPlaceCandidateService;
 		this.socialMediaService = socialMediaService;
 		this.schoolCandidateService = schoolCandidateService;
 		this.languageCandidateService = languageCandidateService;
@@ -60,8 +60,9 @@ public class CandidateManager implements CandidateService {
 
 		CvDto cvDto = new CvDto();
 
-		cvDto.setCandidate(this.candidateDao.findById(candidateId).get());
-		cvDto.setWorkplaceCandidate(this.workplaceCandidateService.getByCandidateId(candidateId).getData());
+		cvDto.setCandidate(this.candidateDao.findById(candidateId));
+//		cvDto.setCandidate(this.candidateDao.getOne(candidateId));
+		cvDto.setWorkPlaceCandidate(this.workPlaceCandidateService.getByCandidateId(candidateId).getData());
 		cvDto.setSocialMedias(this.socialMediaService.getByCandidateId(candidateId).getData());
 		cvDto.setSchoolCandidates(this.schoolCandidateService.getByCandidateId(candidateId).getData());
 		cvDto.setLanguageCandidates(this.languageCandidateService.getByCandidateId(candidateId).getData());
@@ -130,11 +131,6 @@ public class CandidateManager implements CandidateService {
 		}
 	}
 
-	@Override
-	public DataResult<List<CvDto>> getCandidatesCv() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public DataResult<Candidate> getById(int id) {

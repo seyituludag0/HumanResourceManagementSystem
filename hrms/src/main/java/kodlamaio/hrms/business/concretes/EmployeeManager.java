@@ -53,6 +53,11 @@ public class EmployeeManager implements EmployeeService{
 		return new SuccessResult(Message.deleteEmployee);
 	}
 
+	@Override
+	public DataResult<Employee> getById(int id) {
+		return new SuccessDataResult<Employee>(this.employeeDao.getById(id));
+	}
+
 	
 
 	

@@ -12,4 +12,6 @@ public interface EmployeeDao extends JpaRepository<Employee, Integer>{
 //	List<User> findByEmailContaining(String email);
 	List<Employee> findByIdentityNumberContaining(String identityNumber);
 	
+	Employee getById(int id);
+	
 }

@@ -10,28 +10,34 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.WorkplaceDao;
-import kodlamaio.hrms.entities.concretes.Workplace;
+import kodlamaio.hrms.dataAccess.abstracts.WorkPlaceDao;
+import kodlamaio.hrms.entities.concretes.WorkPlace;
 
 @Service
-public class WorkplaceManager implements WorkplaceService{
+public class WorkPlaceManager implements WorkplaceService{
 
-	private WorkplaceDao workplaceDao;
+	private WorkPlaceDao workplaceDao;
 	
 	@Autowired
-	public WorkplaceManager(WorkplaceDao workplaceDao) {
+	public WorkPlaceManager(WorkPlaceDao workplaceDao) {
 		super();
 		this.workplaceDao = workplaceDao;
 	}
 
 	@Override
-	public DataResult<List<Workplace>> getAll() {
-		return new SuccessDataResult<List<Workplace>>(this.workplaceDao.findAll(),"Tüm işyerleri listelendi");
+	public DataResult<List<WorkPlace>> getAll() {
+		return new SuccessDataResult<List<WorkPlace>>(this.workplaceDao.findAll(),"Tüm işyerleri listelendi");
 	}
 
 	@Override
-	public Result add(Workplace workplace) {
+	public Result add(WorkPlace workplace) {
 		this.workplaceDao.save(workplace);
 		return new SuccessResult("İşyeri eklendi");
+	}
+	
+	@Override
+	public Result update(WorkPlace workplace) {
+		this.workplaceDao.save(workplace);
+		return new SuccessResult("Güncellendi");
 	}
 }

@@ -14,8 +14,8 @@ import java.util.List;
 @Table(name="workplaces")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","workplaceCandidates"})
-public class Workplace {
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","workPlaceCandidates"})
+public class WorkPlace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,9 @@ public class Workplace {
     @Column(name="id")
     private int id;
 
-    @Column(name="workplace_name")
-    private String workplaceName;
+    @Column(name="workPlaceName")
+    private String workPlaceName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "workplace" )
-    private List<WorkplaceCandidate> workplaceCandidates;
+  
 
 }

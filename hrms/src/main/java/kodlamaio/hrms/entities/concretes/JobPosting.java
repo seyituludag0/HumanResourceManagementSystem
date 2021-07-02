@@ -1,4 +1,4 @@
- package kodlamaio.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,8 +8,11 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -47,10 +50,7 @@ public class JobPosting {
     @Column(name = "is_active")
     private boolean isActive;
     
-    
-//    @Column(name = "release_status")
-//    private boolean releaseStatus;
-
+   
     
     @Column(name = "posted_date")
     @CreationTimestamp
@@ -88,7 +88,9 @@ public class JobPosting {
     @Column(name="is_open_employer")
     private boolean isOpenEmployer;
     
-    
+    @JsonIgnore
+    @OneToMany(mappedBy = "jobPosting")
+    private List<FavoriteJobPosting> favoriteJobPostings;
     
     public JobPosting(String jobDetails, double minWage, double maxWage, int numberOfOpenPositions, LocalDate lastApplyDate,
 			boolean isActive, Date postedDate) {

@@ -14,7 +14,10 @@ import kodlamaio.hrms.entities.concretes.dtos.JobPostingAddDto;
 import kodlamaio.hrms.entities.concretes.dtos.JobPostingDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,19 +191,34 @@ public DataResult<JobPosting> getById(int id) {
 	}
 
 //	/////////////////////////////////////////////////////////////////////////////////////////////
+	
+//	Pageable pageable = PageRequest.of(pageNo-1, 10);
+	
 	@Override
 	public DataResult<List<JobPosting>> getAllOpenJobPostingList() {
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllOpenJobPostingList());
 	}
+	
+	
+//	@Override
+//	public DataResult<List<JobPosting>> getAllOpenJobPostingList(int pageNo) {
+//		Pageable pageable = PageRequest.of(pageNo, 10);
+//		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllOpenJobPostingList());
+//	}
+	
+	
 
 	@Override
-	public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc() {
-		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateAsc());
+	public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc(int pageNo, int size) {
+		Pageable pageable = PageRequest.of(pageNo-1, size);
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateAsc(pageable));
 	}
 	
 	@Override
-	public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc() {
-		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateDesc());
+	public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc(int pageNo, int size) {
+		Pageable pageable = PageRequest.of(pageNo-1, size);
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAllByOrderByPostedDateDesc(pageable));
+	
 	}
 
 	@Override
@@ -224,6 +242,41 @@ public DataResult<JobPosting> getById(int id) {
 	public DataResult<List<JobPosting>> getAllJobPostingByEmployer(int id) {
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getAllByEmployerId(id), "İş ilanları employer id'sine göre listelendi");
 	}
+
+//	@Override
+//	public DataResult<List<JobPosting>> getByCityId(int cityId) {
+//		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getbyc)
+//	}
+//
+	@Override
+	public DataResult<List<JobPosting>> getByWorkTypeId(int workId) {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getByWorkType_Id(workId),"Çalışma tipine göre iş ilanları listelendi");
+	}
+
+
+	@Override
+    public DataResult<List<JobPosting>> getAllPagination(int pageNo) {
+        Pageable pageable = PageRequest.of(pageNo-1, 10);
+
+        return  new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(pageable).getContent(),"Başarılı");
+    }
+
+	@Override
+	public DataResult<List<JobPosting>> getByCityIdAndWorkTypeId(int cityId, int workTypeId) {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getByCity_IdAndWorkType_Id(cityId, workTypeId));
+	}
+
+	@Override
+	public long countByJobTitleId(int jobTitleId) {
+		return this.jobPostingDao.countByJobTitle_Id(jobTitleId);
+	}
+
+	@Override
+	public long countGetAll() {
+		return this.jobPostingDao.count();
+}
+
+	
 
 	
 }

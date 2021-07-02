@@ -11,5 +11,7 @@ public interface SchoolService {
 	DataResult<List<School>> getAll();
 	
 	Result add(School school);
+
+	Result update(School school);
 	
 }

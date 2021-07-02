@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/jobposting")
+@RequestMapping("api/jobPosting")
 @CrossOrigin
 public class JobPostingsController {
     private JobPostingService jobPostingService;
@@ -85,13 +85,13 @@ public class JobPostingsController {
 
 
     @GetMapping("getAllByCity_Name")
-    public DataResult<List<JobPosting>> getAllByCity_Name(@RequestParam String name){
+    public DataResult<List<JobPosting>> getAllByCityName(@RequestParam String name){
         return this.jobPostingService.getAllByCity_Name(name);
     }
 
-    @GetMapping("getAllByCity_Id")
-    public DataResult<List<JobPosting>> getAllByCity_Id(@RequestParam int id){
-        return this.jobPostingService.getAllByCity_Id(id);
+    @GetMapping("getAllByCityId")
+    public DataResult<List<JobPosting>> getAllByCityId(@RequestParam int cityId){
+        return this.jobPostingService.getAllByCity_Id(cityId);
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -102,13 +102,13 @@ public class JobPostingsController {
     }
     
     @GetMapping("findAllByOrderByPostedDateAsc")
-    public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc() {
-    	return this.jobPostingService.findAllByOrderByPostedDateAsc();
+    public DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc(@RequestParam int pageNo, @RequestParam int size) {
+    	return this.jobPostingService.findAllByOrderByPostedDateAsc(pageNo, size);
     }
     
     @GetMapping("findAllByOrderByPostedDateDesc")
-    public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc() {
-    	return this.jobPostingService.findAllByOrderByPostedDateDesc();
+    public DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc(@RequestParam int pageNo, @RequestParam int size) {
+    	return this.jobPostingService.findAllByOrderByPostedDateDesc(pageNo, size);
     }
     
     
@@ -127,6 +127,33 @@ public class JobPostingsController {
     public DataResult<List<JobPosting>> getAllByIsActiveByEmployee_False(){
     	return this.jobPostingService.getAllByIsActiveByEmployee_False();
     }
-
-
+    
+    @GetMapping("getByWorkTypeId")
+    public DataResult<List<JobPosting>> getByWorkTypeId(@RequestParam int workId){
+    	return this.jobPostingService.getByWorkTypeId(workId);
+    }
+    
+    @GetMapping("getAllPagination")
+    public DataResult<List<JobPosting>> getAllPagination(@RequestParam int pageNo){
+    	return this.jobPostingService.getAllPagination(pageNo);
+    }
+    
+    @GetMapping("getByCityIdAndWorkTypeId")
+    public DataResult<List<JobPosting>> getByCityIdAndWorkTypeId(@RequestParam int cityId, @RequestParam int workTypeId){
+    	return this.jobPostingService.getByCityIdAndWorkTypeId(cityId, workTypeId);
+    }
+    
+    @GetMapping("countByJobTitleId")
+	public long countByJobTitle_Id(@RequestParam int jobTitleId) {
+		return this.jobPostingService.countByJobTitleId(jobTitleId);
+	}
+	@GetMapping("countGetAll")
+	public long countGetAll() {
+		return this.jobPostingService.countGetAll();
+	}
+    
+    
+    
+    
+    
 }

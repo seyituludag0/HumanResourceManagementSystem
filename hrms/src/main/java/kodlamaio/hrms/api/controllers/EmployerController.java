@@ -2,16 +2,13 @@ package kodlamaio.hrms.api.controllers;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Employer;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -34,4 +31,19 @@ public class EmployerController {
    	public DataResult<Employer> getById(@RequestParam int id){
    		return this.employerService.getById(id);
    	}
+
+   	@PostMapping("/update")
+    public Result update(@RequestBody Employer employer){
+        return this.employerService.update(employer);
+    }
+   	
+   	@PostMapping("/changeStatusVerified")
+	public Result changeIsVerifiedByEmployee(@RequestParam int id) {
+		return this.employerService.statusChangeConfirmedByEmployee(id);
+	}
+   	
+   	@GetMapping("/countById")
+	public long  countById(@RequestParam int id) {
+		return this.employerService.countById(id);
+	}
 }

@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes;
+	package kodlamaio.hrms.entities.concretes;
 
 
 import lombok.AllArgsConstructor;
@@ -10,10 +10,10 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name="workplace_candidates")
+@Table(name="work_place_candidates")
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorkplaceCandidate {
+public class WorkPlaceCandidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +21,16 @@ public class WorkplaceCandidate {
     @Column(name="id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name="workplaces_id")
-    private Workplace workplace;
+    @Column(name="work_place_name")
+    private String workPlaceName;
 
     @ManyToOne()
     @JoinColumn(name="candidate_id")
     private Candidate candidate;
 
-    @ManyToOne()
-    @JoinColumn(name="job_title_id")
-    private JobTitle jobTitle;
+    
+    @Column(name="job_title")
+    private String jobTitle;
 
     @Column(name="date_of_entry")
     private LocalDate dateOfEntry;

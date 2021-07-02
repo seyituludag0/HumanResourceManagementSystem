@@ -58,6 +58,12 @@ public class CvDetailManager implements CvDetailService{
 		
 		return new SuccessResult("Resim eklendi");
 	}
+
+	@Override
+	public Result update(CvDetail cvDetail) {
+		this.cvDetailDao.save(cvDetail);
+		return new SuccessResult("Cv güncellendi");
+	}
 	
 	
 	

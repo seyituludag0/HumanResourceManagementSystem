@@ -20,6 +20,6 @@ public interface CandidateService {
 	
 	DataResult<CvDto> getCandidateCvByCandidateId(int candidateId);
 	
-	DataResult<List<CvDto>> getCandidatesCv();
+	
 	
 }

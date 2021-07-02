@@ -35,9 +35,11 @@ public interface JobPostingService {
 
     DataResult<List<JobPosting>> getAllOpenJobPostingList();
     
-    DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc();
+//    DataResult<List<JobPosting>> getAllOpenJobPostingList(int pageNo);
     
-    DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc();
+    DataResult<List<JobPosting>> findAllByOrderByPostedDateDesc(int pageNo, int size);
+    
+    DataResult<List<JobPosting>> findAllByOrderByPostedDateAsc(int pageNo, int size);
     
     DataResult<List<JobPosting>> getAllOpenJobPostingByEmployer(int id);
     
@@ -52,7 +54,17 @@ public interface JobPostingService {
 
 //    DataResult<List<JobPosting>> getAllOpenAndFalseJobPostingList();
     
-
+//    DataResult<List<JobPosting>>getByCityId(int cityId);
+//    
+    DataResult<List<JobPosting>>getByWorkTypeId(int workId);
     
+    DataResult<List<JobPosting>> getByCityIdAndWorkTypeId(int cityId, int workTypeId);
+  
+    DataResult<List<JobPosting>> getAllPagination(int pageNo);
+    
+    long countByJobTitleId(int jobTitleId);
+
+	long countGetAll(); 
+
 }
 

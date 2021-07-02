@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.ExperienceService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.entities.concretes.Experience;
+import kodlamaio.hrms.entities.concretes.dtos.experienceDto.CandidateExperienceDto;
 
 @RestController
 @RequestMapping("/api/experiences")
@@ -36,9 +37,14 @@ public class ExperiencesController {
 		return this.experienceService.getByCandidate_IdOrderByLeaveDateDesc(candidateId);
 	}
 	
-	
+
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@RequestBody Experience experience){
-		return ResponseEntity.ok(this.experienceService.add(experience));
+	public ResponseEntity<?> add(@RequestBody CandidateExperienceDto candidateExperienceDto){
+		return ResponseEntity.ok(this.experienceService.add(candidateExperienceDto));
+	}
+
+	@PostMapping("/update")
+	public ResponseEntity<?> update(@RequestBody CandidateExperienceDto candidateExperienceDto){
+		return ResponseEntity.ok(this.experienceService.update(candidateExperienceDto));
 	}
 }

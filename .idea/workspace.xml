@@ -2,12 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b529303-5b96-4584-be48-e7ad55a8b1a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/AbilityCandidatesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/AbilityCandidatesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/JobPostingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/JobPostingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/LanguageCandidatesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/LanguageCandidatesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SchoolCandidatesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SchoolCandidatesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SchoolsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SchoolsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SocialMediasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/SocialMediasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/WorkCandidatesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/WorkCandidatesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/WorkplacesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/api/controllers/WorkplacesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/AbilityCandidateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/AbilityCandidateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/CandidateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/CandidateService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/JobPostingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/JobPostingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/LanguageCandidateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/LanguageCandidateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SchoolCandidateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SchoolCandidateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SchoolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SchoolService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SocialMediaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/SocialMediaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/WorkplaceCandidateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/WorkplaceCandidateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/WorkplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/abstracts/WorkplaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/AbilityCandidateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/AbilityCandidateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/AuthManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/AuthManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/CandidateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/CandidateManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/JobPostingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/JobPostingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/LanguageCandidateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/LanguageCandidateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SchoolCandidateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SchoolCandidateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SchoolManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SchoolManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SocialMediaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/SocialMediaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/WorkplaceCandidateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/WorkplaceCandidateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/WorkplaceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/business/concretes/WorkplaceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/CandidateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/CandidateDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/JobPostingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/dataAccess/abstracts/JobPostingDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/entities/concretes/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/entities/concretes/Candidate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/entities/concretes/JobPosting.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/entities/concretes/JobPosting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/FakeMernis.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/FakeMernis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/IdentityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/IdentityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/IdentityCheckerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms/mernisService/IdentityCheckerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hrms/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +62,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/mee/hrms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hrms/src/main/java/kodlamaio/hrms" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -52,6 +95,7 @@
       <workItem from="1622798782947" duration="256000" />
       <workItem from="1623065406240" duration="198000" />
       <workItem from="1623065734559" duration="50000" />
+      <workItem from="1624920477597" duration="171000" />
     </task>
     <servers />
   </component>

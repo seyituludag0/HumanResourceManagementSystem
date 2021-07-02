@@ -34,4 +34,10 @@ public class SchoolManager implements SchoolService{
 		this.schoolDao.save(school);
 		return new SuccessResult("Üni eklendi");
 	}
+
+	@Override
+	public Result update(School school) {
+		this.schoolDao.save(school);
+		return new SuccessResult("Üni güncellendi");
+	}
 }

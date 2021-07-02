@@ -52,5 +52,10 @@ public class CvDetailsController {
 		return ResponseEntity.ok(this.cvDetailService.add(cvDetail));
 	}
 	
+	@PostMapping("/update")
+	public ResponseEntity<?> update(@RequestBody CvDetail cvDetail){
+		return ResponseEntity.ok(this.cvDetailService.update(cvDetail));
+	}
+	
 	
 }

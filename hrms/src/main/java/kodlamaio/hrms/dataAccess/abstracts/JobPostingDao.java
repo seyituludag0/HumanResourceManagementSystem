@@ -2,6 +2,7 @@ package kodlamaio.hrms.dataAccess.abstracts;
 
 import kodlamaio.hrms.entities.concretes.JobPosting;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,6 +23,11 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 
 	List<JobPosting> getAllByCity_Id(int id);
 
+
+	List<JobPosting> getByWorkType_Id(int workId);
+	
+	List<JobPosting> getByCity_IdAndWorkType_Id(int cityId, int workTypeId);
+	
 //    -----------------------------------------------------------------------------------
 
 	@Query("From JobPosting where is_open_employer = true") // iş veren tarafından eklenilen sadece
@@ -29,11 +35,12 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 
 	
 	@Query("From JobPosting where is_open_employer = true Order By posted_date Asc") // iş veren tarafından verilen ilanın																// tarihsel sıraya göre gelmesi
-	List<JobPosting> findAllByOrderByPostedDateAsc();
+	List<JobPosting> findAllByOrderByPostedDateAsc(Pageable pageable); //Önceden Eklenen İlanlar
 	
 	
 	@Query("From JobPosting where is_open_employer = true Order By posted_date Desc") // iş veren tarafından verilen ilanın																// tarihsel sıraya göre gelmesi
-	List<JobPosting> findAllByOrderByPostedDateDesc();
+//	List<JobPosting> findAllByOrderByPostedDateDesc(); //Yeni Eklenen İlanlar
+	List<JobPosting> findAllByOrderByPostedDateDesc(Pageable pageable);
 
 	
 	@Query("From JobPosting where is_open_employer = true and employer_id =:id") // iş ilanının employer iye göre gelmesi
@@ -52,6 +59,12 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 
 	@Query("From JobPosting where is_active=false And is_open_employer=true Order By posted_date DESC")//active edilmemiş ADMİN GÖRÜCEK
 	List <JobPosting> getAllByIsActiveByEmployee_False();
+//  -----------------------------------------------------------------------------------
+
+	int countByJobTitle_Id(int jobTitleId);
+	
+	
+	
 	
 }
 

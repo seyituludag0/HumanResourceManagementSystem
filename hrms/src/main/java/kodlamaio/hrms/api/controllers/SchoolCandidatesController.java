@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.SchoolCandidateService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.entities.concretes.SchoolCandidate;
+import kodlamaio.hrms.entities.concretes.dtos.candidateSchoolsDto.SchoolCandidateDto;
 
 @RestController
 @RequestMapping("/api/schoolcandidate")
+@CrossOrigin
 public class SchoolCandidatesController {
 
 	private SchoolCandidateService schoolCandidateService;
@@ -43,8 +46,13 @@ public class SchoolCandidatesController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@RequestBody SchoolCandidate schoolCandidate){
-		return ResponseEntity.ok(this.schoolCandidateService.add(schoolCandidate));
+	public ResponseEntity<?> add(@RequestBody SchoolCandidateDto schoolCandidateDto){
+		return ResponseEntity.ok(this.schoolCandidateService.add(schoolCandidateDto));
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<?> update(@RequestBody SchoolCandidateDto schoolCandidateDto){
+		return ResponseEntity.ok(this.schoolCandidateService.update(schoolCandidateDto));
 	}
 	
 }

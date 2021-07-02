@@ -31,5 +31,8 @@ public class Employer extends User{
     @Pattern(regexp="^(05)([0-9]{2})\\s?([0-9]{3})\\s?([0-9]{2})\\s?([0-9]{2})$",message = "Telefon numarası format hatası")
     @Column(name="phone_number")
     private String phoneNumber;
+    
+    @Column(name = "is_verified", columnDefinition = "boolean default true")
+	private boolean isVerified = true;
 }
 

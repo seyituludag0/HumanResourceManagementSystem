@@ -10,4 +10,6 @@ public interface SchoolCandidateDao extends JpaRepository<SchoolCandidate, Integ
 	
 	List<SchoolCandidate> getByCandidateId(int candidateId);
 	List<SchoolCandidate> getByCandidate_IdOrderByDateOfGraduationDesc(int candidateId);
+
+	SchoolCandidate findById(int id);
 }
