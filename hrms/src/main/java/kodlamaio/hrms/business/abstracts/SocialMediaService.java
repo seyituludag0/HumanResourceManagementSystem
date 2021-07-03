@@ -20,6 +20,6 @@ public interface SocialMediaService {
 //	Result update(SocialMedia socialMedia);
 	
 	Result update(SocialMediaDto socialMedia);
-	
+	Result delete(int id);
 	
 }

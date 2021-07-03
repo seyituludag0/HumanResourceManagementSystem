@@ -68,6 +68,11 @@ public class AbilityCandidateManager implements AbilityCandidateService {
 		
 		return new SuccessResult("Güncellendi");
 	}
-
+	
+	@Override
+	public Result delete(int id) {
+		this.abilityCandidateDao.deleteById(id);
+		return new SuccessResult("Silindi");
+	}
 
 }

@@ -75,4 +75,10 @@ public class LanguageCandidateManager implements LanguageCandidateService {
 				"Adayın dil listesi getirildi");
 	}
 
+	@Override
+	public Result delete(int id) {
+		this.languageCandidateDao.deleteById(id);
+		return new SuccessResult("Silindi");
+	}
+
 }

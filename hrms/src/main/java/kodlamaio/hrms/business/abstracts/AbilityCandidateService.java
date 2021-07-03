@@ -16,5 +16,5 @@ public interface AbilityCandidateService {
 	Result add(AbilityCandidateDto abilityCandidateDto);
 	
 	Result update(AbilityCandidateDto abilityCandidateDto);
-	
+	Result delete(int id);
 }

@@ -10,15 +10,13 @@ import kodlamaio.hrms.entities.concretes.dtos.languageCandidateDto.LanguageCandi
 public interface LanguageCandidateService {
 
 	DataResult<List<LanguageCandidate>> getAll();
-	
-	DataResult<List<LanguageCandidate>> getByCandidateId(int candidateId);	
-	
-//	Result add(LanguageCandidate languageCandiate);
-//	
-//	Result update(LanguageCandidate languageCandiate);
-	
-Result add(LanguageCandidateDto languageCandidateDto);
-	
+
+	DataResult<List<LanguageCandidate>> getByCandidateId(int candidateId);
+
+	Result add(LanguageCandidateDto languageCandidateDto);
+
 	Result update(LanguageCandidateDto languageCandidateDto);
-	
+
+	Result delete(int id);
+
 }

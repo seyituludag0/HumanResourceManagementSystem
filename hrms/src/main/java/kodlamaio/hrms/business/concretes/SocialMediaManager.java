@@ -75,7 +75,11 @@ public class SocialMediaManager implements SocialMediaService{
 		return new SuccessResult("Sosyal medya güncellendi");
 	}
 
-
+	@Override
+	public Result delete(int id) {
+		this.socialMediaDao.deleteById(id);
+		return new SuccessResult("Silindi");
+	}
 
 
 

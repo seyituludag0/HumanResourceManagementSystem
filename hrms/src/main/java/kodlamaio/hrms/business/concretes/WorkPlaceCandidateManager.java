@@ -75,5 +75,9 @@ public class WorkPlaceCandidateManager implements WorkPlaceCandidateService {
 		
 		return new SuccessResult("Güncellendi");
 	}
-
+	@Override
+	public Result delete(int id) {
+		this.workplaceCandidateDao.deleteById(id);
+		return new SuccessResult("Silindi");
+	}
 }

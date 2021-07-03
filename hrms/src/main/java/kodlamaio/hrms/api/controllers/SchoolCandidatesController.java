@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.SchoolCandidateService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.SchoolCandidate;
 import kodlamaio.hrms.entities.concretes.dtos.candidateSchoolsDto.SchoolCandidateDto;
 
@@ -53,6 +54,11 @@ public class SchoolCandidatesController {
 	@PostMapping("/update")
 	public ResponseEntity<?> update(@RequestBody SchoolCandidateDto schoolCandidateDto){
 		return ResponseEntity.ok(this.schoolCandidateService.update(schoolCandidateDto));
+	}
+
+	@PostMapping("delete")
+	public Result delete (@RequestParam("id") int id) {
+		return this.schoolCandidateService.delete(id);
 	}
 	
 }

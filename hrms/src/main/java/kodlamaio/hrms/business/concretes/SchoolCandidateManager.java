@@ -83,5 +83,9 @@ public class SchoolCandidateManager implements SchoolCandidateService {
 		
 		return new SuccessResult("Okul bilgileri güncellendi");
 	}
-
+	@Override
+	public Result delete(int id) {
+		this.schoolCandidateDao.deleteById(id);
+		return new SuccessResult("Silindi");
+	}
 }

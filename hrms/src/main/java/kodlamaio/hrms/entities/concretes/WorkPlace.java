@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="workplaces")
+@Table(name="work_places")
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","workPlaceCandidates"})

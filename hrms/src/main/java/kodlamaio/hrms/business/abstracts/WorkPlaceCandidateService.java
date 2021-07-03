@@ -16,5 +16,5 @@ public interface WorkPlaceCandidateService {
 	Result add(WorkPlaceCandidateDto workPlaceCandidateDto);
 	
 	Result update(WorkPlaceCandidateDto workPlaceCandidateDto);
-	
+	Result delete(int id);
 }

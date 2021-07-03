@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.WorkPlaceCandidateService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.WorkPlaceCandidate;
 import kodlamaio.hrms.entities.concretes.dtos.workPlaceCandidateDto.WorkPlaceCandidateDto;
 
@@ -51,6 +53,11 @@ public class WorkPlaceCandidatesController {
 		return ResponseEntity.ok(this.workplaceCandidateService.update(workPlaceCandidateDto));
 	}
 	
+
+	@PostMapping("delete")
+	public Result delete (@RequestParam("id") int id) {
+		return this.workplaceCandidateService.delete(id);
+	}
 	
 	
 	

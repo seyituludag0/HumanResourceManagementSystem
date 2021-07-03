@@ -19,7 +19,7 @@ public interface SchoolCandidateService {
 
 	Result add(SchoolCandidateDto schoolCandidateDto);
 	
-//	Result update(SchoolCandidate schoolCandidate);
+	Result delete(int id);
 	
 	Result update(SchoolCandidateDto schoolCandidateDto);
 }

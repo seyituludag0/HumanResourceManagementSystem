@@ -34,15 +34,15 @@ public class SocialMediasController {
 		this.socialMediaService = socialMediaService;
 	}
 	
-//	@GetMapping("/getAll")
-//	public DataResult<List<SocialMedia>> getAll(){
-//		return this.socialMediaService.getAll();
-//	}
-//	
-//	@GetMapping("/getByCandidateId")
-//	DataResult<List<SocialMedia>> getByCandidateId(@RequestParam int candidateId){
-//		return this.socialMediaService.getByCandidateId(candidateId);
-//	}
+	@GetMapping("/getAll")
+	public DataResult<List<SocialMedia>> getAll(){
+		return this.socialMediaService.getAll();
+	}
+	
+	@GetMapping("/getByCandidateId")
+	DataResult<List<SocialMedia>> getByCandidateId(@RequestParam int candidateId){
+		return this.socialMediaService.getByCandidateId(candidateId);
+	}
 //
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@Valid @RequestBody SocialMediaDto socialMedia){
@@ -54,8 +54,10 @@ public class SocialMediasController {
 		return ResponseEntity.ok(this.socialMediaService.update(socialMedia));
 	}
 	
-//	@PostMapping("/update")
-//	public ResponseEntity<?> update(@Valid @RequestBody SocialMediaAddDto socialMedia){
-//		return ResponseEntity.ok(this.socialMediaService.update(socialMedia));
-//	}
+
+	@PostMapping("delete")
+	public Result delete (@RequestParam("id") int id) {
+		return this.socialMediaService.delete(id);
+	}
+	
 }
