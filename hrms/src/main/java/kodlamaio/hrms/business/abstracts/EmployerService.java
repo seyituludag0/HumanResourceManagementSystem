@@ -6,6 +6,8 @@ import kodlamaio.hrms.entities.concretes.Employer;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public interface EmployerService {
 	Result add(Employer employer);
 
@@ -22,4 +24,6 @@ public interface EmployerService {
 	long countById(int id);
 
 	long countGetAll();
+	
+	Result uploadPhoto(int employerId, MultipartFile file);
 }

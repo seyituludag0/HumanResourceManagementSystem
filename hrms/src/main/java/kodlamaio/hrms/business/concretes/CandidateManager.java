@@ -1,5 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import kodlamaio.hrms.core.adapters.EmailAdapter;
@@ -75,6 +77,8 @@ public class CandidateManager implements CandidateService {
 
 		return new SuccessDataResult<CvDto>(cvDto, "Cv getirildi");
 	}
+	
+
 
 	@Override
 	public DataResult<List<Candidate>> getAll() {
@@ -136,6 +140,8 @@ public class CandidateManager implements CandidateService {
 	public DataResult<Candidate> getById(int id) {
 		return new SuccessDataResult<Candidate>(this.candidateDao.getOne(id));
 	}
+
+	
 
 	
 

@@ -2,6 +2,7 @@ package kodlamaio.hrms.business.concretes;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.business.constants.Message;
+import kodlamaio.hrms.core.helpers.imageHelpers.ImageUpload;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
@@ -9,21 +10,26 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
+import kodlamaio.hrms.entities.concretes.CvDetail;
 import kodlamaio.hrms.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class EmployerManager implements EmployerService {
     private EmployerDao employerDao;
+    private ImageUpload imageUpload;
 
     @Autowired
-    public EmployerManager(EmployerDao employerDao) {
+    public EmployerManager(EmployerDao employerDao, ImageUpload imageUpload) {
         this.employerDao = employerDao;
+        this.imageUpload = imageUpload;
     }
 
     @Override
@@ -38,7 +44,21 @@ public class EmployerManager implements EmployerService {
         this.employerDao.save(employer);
         return new SuccessResult(Message.addEmployer);
     }
-
+    
+    public Result uploadPhoto(int employerId, MultipartFile file) {
+    	Employer employer = this.getById(employerId).getData();
+		System.out.println("id: " + employerId);
+		
+		
+		Map<String, String> result = (Map<String, String>)this.imageUpload.upload(file).getData();
+		String url = result.get("url");
+		employer.setCompanyLogo(url);
+		
+		this.employerDao.save(employer);
+		
+		return new SuccessResult("Resim eklendi");
+	}
+    
     @Override
     public Result update(Employer employer) {
         this.employerDao.save(employer);
@@ -80,7 +100,6 @@ public class EmployerManager implements EmployerService {
 	@Override
 	public Result statusChangeConfirmedByEmployee(int employerId) {
 		Employer employer = this.employerDao.findById(employerId);
-		System.out.println(employer);
 		employer.setVerified(!employer.isVerified());
 		this.employerDao.save(employer);
 		return new SuccessResult("Şirketin Doğrulanma durumu değiştirildi");

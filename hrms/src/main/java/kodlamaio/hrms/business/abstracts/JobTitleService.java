@@ -12,4 +12,5 @@ public interface JobTitleService {
 	Result add(JobTitle jobTitle);
 	Result update(JobTitle jobTitle);
 	Result delete(int id);
+	long countGetAll();
 }

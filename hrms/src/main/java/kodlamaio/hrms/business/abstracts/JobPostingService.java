@@ -65,6 +65,8 @@ public interface JobPostingService {
     long countByJobTitleId(int jobTitleId);
 
 	long countGetAll(); 
+	
+	DataResult<List<JobPosting>> getByJobTitleAndCityNameAndWorkTypeId(String jobTitle, String cityName, int workTypeId);
 
 }
 

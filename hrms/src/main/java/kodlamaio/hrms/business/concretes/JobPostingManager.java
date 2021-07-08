@@ -276,6 +276,11 @@ public DataResult<JobPosting> getById(int id) {
 		return this.jobPostingDao.count();
 }
 
+	@Override
+	public DataResult<List<JobPosting>> getByJobTitleAndCityNameAndWorkTypeId(String jobTitle, String cityName, int workTypeId) {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.getByJobTitle_TitleAndCity_NameAndWorkType_Id(jobTitle,cityName, workTypeId), "İlanlar şehire ve çalışma türüne göre getirildi");
+	}
+
 	
 
 	

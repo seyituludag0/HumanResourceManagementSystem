@@ -45,9 +45,9 @@ public class CvDetailManager implements CvDetailService{
 		return new SuccessResult("Cv eklendi");
 	}
 
+	@Override
 	public Result uploadPhoto(int candidateId, MultipartFile file) {
 		CvDetail candidate = this.getByCandidateId(candidateId).getData();
-		System.out.println("id: " + candidateId);
 		
 		
 		Map<String, String> result = (Map<String, String>)this.imageUpload.upload(file).getData();

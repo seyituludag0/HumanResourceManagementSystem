@@ -10,10 +10,12 @@ public interface FavoriteJobPostingService {
 
 	 DataResult<List<FavoriteJobPosting>> getAll();
 	 DataResult<FavoriteJobPosting> getById(int id);
-	 Result add(FavoriteJobPosting favoriteJobPosting);
-	 Result update(FavoriteJobPosting favoriteJobPosting);
-	 Result delete(int id);
+	 DataResult<FavoriteJobPosting> getByCandidateIdAndJobPostingId(int candidateId, int jobPostingId);
+	 Result add(int candidateId, int jobPostingId);
+	 Result delete(int candidateId, int jobPostingId);
 	 DataResult<List<FavoriteJobPosting>> getByCandidateId(int candidateId);
 	 DataResult<List<FavoriteJobPosting>> getByJobPostingId(int jobPostingId);
 	
 }
+
+//int candidateId, int jobAdId

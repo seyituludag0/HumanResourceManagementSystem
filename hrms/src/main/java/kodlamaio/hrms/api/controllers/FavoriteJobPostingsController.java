@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,17 +32,13 @@ public class FavoriteJobPostingsController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@Valid @RequestBody FavoriteJobPosting favoriteJobPosting) {
-		return ResponseEntity.ok(this.favoriteJobPostingService.add(favoriteJobPosting));
-	}
-	@PostMapping("/update")
-	public ResponseEntity<?> update(@Valid @RequestBody FavoriteJobPosting favoriteJobPosting) {
-		return ResponseEntity.ok(this.favoriteJobPostingService.update(favoriteJobPosting));
+	public ResponseEntity<?> add(@Valid @RequestParam int candidateId, @RequestParam int jobPostingId) {
+		return ResponseEntity.ok(this.favoriteJobPostingService.add(candidateId, jobPostingId));
 	}
 	
 	@PostMapping("/delete")
-	public Result delete(@RequestParam int id) {
-		return this.favoriteJobPostingService.delete(id);
+	public Result delete(@RequestParam int candidateId, @RequestParam int jobPostingId) {
+		return this.favoriteJobPostingService.delete(candidateId, jobPostingId);
 	}
 	
 	@GetMapping("/getall")
@@ -57,13 +52,18 @@ public class FavoriteJobPostingsController {
 	}
 	
 	@GetMapping("/getByCandidateId")
-	public DataResult<List<FavoriteJobPosting>> getByJobSeekerId(@RequestParam int jobSeekerId){
-		return this.favoriteJobPostingService.getByCandidateId(jobSeekerId);
+	public DataResult<List<FavoriteJobPosting>> getByCandidateId(@RequestParam int candidateId){
+		return this.favoriteJobPostingService.getByCandidateId(candidateId);
 	}
 	
 	@GetMapping("/getByAdvertId")
 	public DataResult<List<FavoriteJobPosting>> getByJobPostingId(@RequestParam int jobPosting){
 		return this.favoriteJobPostingService.getByJobPostingId(jobPosting);
+	}
+	
+	@GetMapping("/getByCandidateIdAndJobPostingId")
+	public DataResult<FavoriteJobPosting> getByCandidateIdAndJobPostingId(int candidateId, int jobPostingId){
+		return this.favoriteJobPostingService.getByCandidateIdAndJobPostingId(candidateId, jobPostingId);
 	}
 	
 }

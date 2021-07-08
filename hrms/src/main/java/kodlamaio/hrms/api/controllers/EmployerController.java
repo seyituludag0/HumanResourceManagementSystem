@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -46,4 +47,15 @@ public class EmployerController {
 	public long  countById(@RequestParam int id) {
 		return this.employerService.countById(id);
 	}
+   	
+   	@GetMapping("/employerAllCount")
+   	public long countGetAll() {
+   		return this.employerService.countGetAll();
+   	}
+   	
+   	@PostMapping("/uploadPhoto")
+	public Result uploadPhoto(@RequestParam int employerId, @RequestParam("file") MultipartFile photoFile) {
+		return this.employerService.uploadPhoto(employerId, photoFile);
+	}
+   
 }

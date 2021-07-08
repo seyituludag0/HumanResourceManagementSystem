@@ -28,6 +28,12 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 	
 	List<JobPosting> getByCity_IdAndWorkType_Id(int cityId, int workTypeId);
 	
+//	List<JobPosting> getByCity_NameAndWorkType_Id(String cityName, int workTypeId);
+	
+//	List<JobPosting> getByJobTitle_Title(String title);
+	
+	List<JobPosting> getByJobTitle_TitleAndCity_NameAndWorkType_Id(String title, String cityName, int workTypeId);
+	
 //    -----------------------------------------------------------------------------------
 
 	@Query("From JobPosting where is_open_employer = true") // iş veren tarafından eklenilen sadece

@@ -48,4 +48,9 @@ public class JobTitlesController {
 	public Result delete(@PathVariable("id") int id){
 		return this.jobTitleService.delete(id);
 	}
+	
+	@GetMapping("/jobTitleAllCount")
+   	public long countGetAll() {
+   		return this.jobTitleService.countGetAll();
+   	}
 }

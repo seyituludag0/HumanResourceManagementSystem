@@ -10,7 +10,6 @@ import kodlamaio.hrms.entities.concretes.dtos.CvDto;
 public interface CandidateService {
 	DataResult<List<Candidate>> getAll();
 	Result add(Candidate candidate);
-//	Result add2(CandidateRegisterDto candidateRegisterDto);
 	Result update(Candidate candidate);
 	Result delete(int id);
 	

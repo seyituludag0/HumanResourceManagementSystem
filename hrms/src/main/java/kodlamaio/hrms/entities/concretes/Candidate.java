@@ -2,7 +2,6 @@ package kodlamaio.hrms.entities.concretes;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +11,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -43,7 +43,7 @@ public class Candidate extends User{
 	@Column(name="birth_date")
 	private LocalDate birthDate;	
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidate")
 	private List<SchoolCandidate> schoolCandidates;
 	

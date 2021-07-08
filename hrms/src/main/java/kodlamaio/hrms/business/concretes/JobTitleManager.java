@@ -54,4 +54,9 @@ public class JobTitleManager implements JobTitleService{
 		return new SuccessResult(Message.deleteJobTitle);
 	}
 
+	@Override
+	public long countGetAll() {
+		return this.jobTitleDao.count();
+	}
+
 }

@@ -14,4 +14,8 @@ public interface FavoriteJobPostingDao extends JpaRepository<FavoriteJobPosting,
 	
 	List<FavoriteJobPosting> getByJobPosting_Id(int jobPostingId);
 	
+	FavoriteJobPosting getByCandidateIdAndJobPostingId(int candidateId,int jobPostingId);
+	
+	boolean existsByCandidate_IdAndJobPosting_Id(int candidateId, int jobPostingId);
+	
 }

@@ -147,13 +147,16 @@ public class JobPostingsController {
 	public long countByJobTitle_Id(@RequestParam int jobTitleId) {
 		return this.jobPostingService.countByJobTitleId(jobTitleId);
 	}
-	@GetMapping("countGetAll")
+	@GetMapping("jobPostingAllCount")
 	public long countGetAll() {
 		return this.jobPostingService.countGetAll();
 	}
     
     
-    
+    @GetMapping("/getByJobTitleAndCityNameAndWorkTypeId")
+    public DataResult<List<JobPosting>> getByJobTitleAndCityNameAndWorkTypeId(@RequestParam String jobTitle, @RequestParam String cityName, @RequestParam int workTypeId){
+    	return this.jobPostingService.getByJobTitleAndCityNameAndWorkTypeId(jobTitle, cityName, workTypeId);
+    }
     
     
 }
