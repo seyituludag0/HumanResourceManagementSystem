@@ -1,5 +1,7 @@
 # HumanResourceManagementSystem
 
+[Bu projenin Frontend projesine gitmek için tıklayın](https://github.com/seyituludag0/hrms-react "Frontend Projesi")
+
 ## Swagger UI View
 
 
